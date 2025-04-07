@@ -17,6 +17,10 @@ This repo covers LLM concepts both theoretically and practically (sample project
 - [RAG: Retrieval-Augmented Generation](#rag)
 - [Fine Tuning](#finetuning)
 - [LLM Application Frameworks & Libraries](#llmframeworks)
+   - [LangChain](#langchain)
+   - [LangGraph](#langgraph)
+   - [LLamaIndex](#llamaindex)
+   - [PydanticAI](#pydanticai) 
 - [Agents](#llmagents)
   - [Tools](#agenttools)
   - [MCP: Model Context Protocol](#mcp)
@@ -44,11 +48,13 @@ Why should we use/learn/develop LLM models and app?
 
 ## LLM Application Frameworks & Libraries <a name="llmframeworks"></a>
 
+
 ## Agents <a name="llmagents"></a>
 
 ### Tools <a name="agenttools"></a>
 
 ### MCP: Model Context Protocol <a name="mcp"></a>
+https://www.anthropic.com/engineering/building-effective-agents
 
 ## Agent Frameworks <a name="agentframework"></a>
 
@@ -56,6 +62,14 @@ Why should we use/learn/develop LLM models and app?
 ## LLM Sample Projects <a name="samples"></a>
 
 ## Other Useful Resources Related LLMs <a name="other-resources"></a>
+- https://www.promptingguide.ai/
+- https://python.langchain.com/docs/introduction/
+- https://docs.crewai.com/
+- https://docs.praison.ai/
+- https://modelcontextprotocol.io/
+- https://smithery.ai/
+- https://developer.nvidia.com/blog/category/generative-ai/
+- https://huggingface.co/
 
 
 
