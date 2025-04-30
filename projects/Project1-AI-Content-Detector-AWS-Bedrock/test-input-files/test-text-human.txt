@@ -1,0 +1,17 @@
+I'm trying to write posts with newly updated hands-on samples/labs (using my commands from hands-on samples/labs/codes on my GitHub that were implemented/tested 2-3 years ago). However, I realized that among the sloppy posts produced by AI (COMPLETELY AI generated), the laboured posts are unfortunately lost. This leads to a serious loss of motivation to write new posts.
+
+By the way, I'm not against AI, I even generate some images using AI, I make some grammar corrections, paraphrasing using AI in my writings/posts (because, I'm not native English speaker), I get ideas, new information/perspectives from AI. However, I realized that many posts are COMPLETELY AI generated. You can understand from unnecessary too frequent emojis, short info, unnecessary too frequent capitalisation, code that is simply copied and not even included in the code blog, 10-20 long posts are written in ONE-DAY, ~300-400 long posts in 2 weeks, etc. The problem is that there are many posts that are COMPLETELY AI generated. Human generated posts are getting disappear. At least, I'm feeling that giving effort while writing post in DEV, testing code/command in the post, creating drawings in the post are losing its value.
+
+Some may disagree, some may agree.
+
+But in the end, as these fully AI-generated articles increase, there will be fully AI-generated articles in the future.
+
+As bad money drives out good money, there will be poor quality, untested commands/codes, COMPLETELY AI generated posts.
+
+There will be no point in writing and reading.
+
+It's important for EVERYONE, even for those who produce writing entirely with AI. Otherwise, there will be only untested commands/codes, not written/tested by real humans.
+
+How will this inflation of sloppy writings/posts be resolved in DEV community? At least if there is a blind review randomly (getting score to motivate people), everyone who sees a post can tell if it is completely AI generated or not. I don't know any other rational way?
+
+How will people stay motivated to keep writing posts?
