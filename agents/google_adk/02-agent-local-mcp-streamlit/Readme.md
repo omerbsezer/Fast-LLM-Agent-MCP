@@ -8,7 +8,9 @@ GOOGLE_GENAI_USE_VERTEXAI=FALSE
 GOOGLE_API_KEY=PASTE_YOUR_ACTUAL_API_KEY_HERE
 ``` 
 
-## RUN AGENT
+Please install nodejs, npm, npx in your system to run npx-based MCP tool.
+
+## Run Agent
 
 Please run non-root username. 
 ```
@@ -25,7 +27,7 @@ or
 python -m streamlit run app.py
 ```
 
-## PROMPTS
+## Prompts
 
 ```
 - list the files in the '/home/omer/mcp-test'
