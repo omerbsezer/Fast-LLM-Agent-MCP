@@ -13,6 +13,12 @@ AWS_REGION_NAME = ""
 For OpenAI, Antropic:
 - https://google.github.io/adk-docs/agents/models/#using-cloud-proprietary-models-via-litellm
 
+For Ollama:
+- Download and run model on local PC. Please take account of your GPU VRAM size for different model. If you only want to test, please use the smallest one: e.g. llama3.2:1b
+- https://ollama.com/download
+- Search models, views sizes, sample: https://ollama.com/library/llama3.2
+
+
 ## Run Agent
 
 Please run non-root username. 
