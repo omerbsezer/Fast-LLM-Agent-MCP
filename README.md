@@ -127,16 +127,26 @@ https://www.anthropic.com/engineering/building-effective-agents
 
 ## Agent Frameworks <a name="agentframework"></a>
 
+## Agent Samples 
 
-## Sample Projects <a name="samples"></a>
+### Sample-00: Agent with Google ADK and ADK Web <a name="agent-adk-web"></a>
 
-### Project1: AI Content Detector with AWS Bedrock, Llama 3.1 405B <a name="ai-content-detector"></a>
+### Sample-01: Agent Container with Google ADK, FastAPI, Streamlit GUI <a name="agent-adk-container-streamlit"></a>
 
-### Project2: LLM with Model Context Protocol (MCP) using PraisonAI, Ollama, LLama 3.1 1B,8B <a name="localllm-mcp-praisonai"></a>
+### Sample-02: Agent Local MCP Tool (FileServer) with Google ADK, FastAPI, Streamlit GUI  <a name="agent-local-mcp-fileOps-streamlit"></a>
 
-### Project3: Agent with Google ADK and ADK Web <a name="agent-adk-web"></a>
+### Sample-03: Agent Remote MCP Tool (Web Search: Serper) with Google ADK, FastAPI, Streamlit GUI  <a name="agent-remote-mcp-google-search-serper"></a>
 
-### Project4: Agent Container with Google ADK, FastAPI, Streamlit <a name="agent-adk-container-streamlit"></a>
+### Sample-04: Agent Memory and Builtin Google Search Tool with Streamlit GUI  <a name="agent-memory-builtin-search-tool"></a>
+
+### Sample-05: Agent LiteLLM - AWS Bedrock (Llama3.1-405B), Ollama with Streamlit GUI  <a name="agent-litellm-bedrock-ollama"></a>
+
+
+## General LLM Projects <a name="projects"></a>
+
+### Project-01: AI Content Detector with AWS Bedrock, Llama 3.1 405B <a name="ai-content-detector"></a>
+
+### Project-02: LLM with Model Context Protocol (MCP) using PraisonAI, Ollama, LLama 3.1 1B,8B <a name="localllm-mcp-praisonai"></a>
 
 ## Other Useful Resources Related LLMs, Agents, MCPs <a name="other-resources"></a>
 - https://www.promptingguide.ai/
