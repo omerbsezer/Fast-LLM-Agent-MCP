@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+google-adk
+google-generativeai
+litellm
+boto3
