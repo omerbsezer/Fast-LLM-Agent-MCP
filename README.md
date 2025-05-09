@@ -27,7 +27,6 @@ This repo covers LLM, Agents, MCP Tools concepts both theoretically and practica
 - [Fine Tuning](#finetuning)
 - [LLM Application Frameworks & Libraries](#llmframeworks)
   - [LangChain-LangGraph](#lang)
-  - [LLamaIndex](#llamaindex)
 - [Agent Frameworks](agentframework)
   - [Google Agent Development Kit](#adk) 
   - [CrewAI](#crewai)
