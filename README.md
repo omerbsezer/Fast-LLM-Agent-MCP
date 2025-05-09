@@ -1,6 +1,7 @@
 # Fast LLM & Agents & MCPs
-This repo covers LLM concepts both theoretically and practically:
+This repo covers LLM, Agents, MCP Tools concepts both theoretically and practically:
 - LLM Architectures, RAG, Fine Tuning, Agents, Tools, MCP, Agent Frameworks, Reference Documents.
+- Agent Sample Codes with Google Agent Development Kit (ADK).
   
 # Table of Contents
 - [Motivation](#motivation)
@@ -9,18 +10,17 @@ This repo covers LLM concepts both theoretically and practically:
 - [RAG: Retrieval-Augmented Generation](#rag)
 - [Fine Tuning](#finetuning)
 - [LLM Application Frameworks & Libraries](#llmframeworks)
-   - [LangChain](#langchain)
-   - [LangGraph](#langgraph)
-   - [LLamaIndex](#llamaindex)
-   - [PydanticAI](#pydanticai)
-- [Agents](#llmagents)
-  - [Tools](#agenttools)
-  - [MCP: Model Context Protocol](#mcp)
-  - [A2A: Agent to Agent Protocol](#a2a)
+  - [LangChain-LangGraph](#lang)
+  - [LLamaIndex](#llamaindex)
 - [Agent Frameworks](agentframework)
   - [Google Agent Development Kit](#adk) 
   - [CrewAI](#crewai)
   - [PraisonAI Agents](#praisonai) 
+  - [PydanticAI](#pydanticai)  
+- [Agents](#llmagents)
+  - [Tools](#agenttools)
+  - [MCP: Model Context Protocol](#mcp)
+  - [A2A: Agent to Agent Protocol](#a2a)
 - [Samples Projects](#samples)
   - [Project1: AI Content Detector with AWS Bedrock, Llama 3.1 405B](#ai-content-detector)
   - [Project2: LLM with Model Context Protocol (MCP) using PraisonAI, Ollama, LLama 3.1 1B,8B](#localllm-mcp-praisonai)
@@ -117,19 +117,89 @@ Fine-Tuning Methods:
 
 ## LLM Application Frameworks & Libraries <a name="llmframeworks"></a>
 
+LLM (Large Language Model) Application Frameworks and Libraries are tools designed to simplify the development, orchestration, and deployment of applications powered by large language models like GPT, Claude, Gemini, or LLaMA. These tools provide abstractions for managing prompts, memory, agents, tools, workflows, and integrations with external data or systems.
 
+### LangChain-LangGraph <a name="lang"></a>
+- LangChain implements a standard interface for large language models and related technologies, such as embedding models and vector stores, and integrates with hundreds of providers.
+- https://python.langchain.com/docs/introduction/
+
+
+## Agent Frameworks <a name="agentframework"></a>
+
+Agent frameworks are specialized software tools or libraries designed to build, manage, and orchestrate LLM-based agents. These frameworks help you create intelligent agents that can autonomously reason, plan, and act using external tools or in coordination with other agents.
+
+What Do Agent Frameworks Provide?
+- Agent Abstractions: Define agent identity, goals, memory, behavior, and permissions.
+- Tool Interfaces: Register external tools (APIs, functions, databases, etc.) agents can use.
+- Execution Logic: Handle planning, decision-making, tool-calling, retries, and feedback loops.
+- Multi-Agent Orchestration: Manage communication and task delegation among multiple agents.
+- Memory & Context: Enable persistent memory, history tracking, and contextual reasoning.
+- Observability: Offer tracing, logging, and step-by-step reasoning outputs for debugging.
+
+### Google Agent Development Kit <a name="adk"></a>
+
+- Agent Development Kit (ADK) is a flexible and modular framework for developing and deploying AI agents. While optimized for Gemini and the Google ecosystem, ADK is model-agnostic, deployment-agnostic, and is built for compatibility with other frameworks.
+- ADK was designed to make agent development feel more like software development, to make it easier for developers to create, deploy, and orchestrate agentic architectures that range from simple tasks to complex workflows.
+- https://google.github.io/adk-docs/
+
+### CrewAI <a name="crewai"></a>
+
+CrewAI is  Python framework built entirely from scratch—completely independent of LangChain or other agent frameworks. CrewAI empowers developers with both high-level simplicity and precise low-level control, ideal for creating autonomous AI agents tailored to any scenario:
+
+- CrewAI Crews: Optimize for autonomy and collaborative intelligence, enabling you to create AI teams where each agent has specific roles, tools, and goals.
+- CrewAI Flows: Enable granular, event-driven control, single LLM calls for precise task orchestration and supports Crews natively.
+- https://docs.crewai.com/introduction
+
+### PraisonAI Agents <a name="praisonai"></a> 
+
+- PraisonAI is a production-ready Multi-AI Agents framework with self-reflection, designed to create AI Agents to automate and solve problems ranging from simple tasks to complex challenges.
+- https://docs.praison.ai/
+
+### PydanticAI <a name="pydanticai"></a> 
+
+- PydanticAI is a Python agent framework designed to make it less painful to build production grade applications with Generative AI.
+https://ai.pydantic.dev/
+  
 ## Agents <a name="llmagents"></a>
+
+An LLM agent is an autonomous or semi-autonomous system that uses a large language model (like GPT, Claude, or Gemini) to reason, make decisions, and take actions using external tools or APIs to accomplish a goal.
+
+An LLM agent typically includes:
+- LLM Core: The brain that interprets tasks and generates reasoning.
+- Memory (optional): Stores history of actions, inputs, and outputs for context-aware behavior.
+- Tools: External APIs, databases, web search, code execution, or custom functions the agent can call.
+- Environment: The runtime or framework (e.g., LangChain, CrewAI, Google ADK) in which the agent operates.
+
+
+
+
+
+
 
 ### Tools <a name="agenttools"></a>
 
-### MCP: Model Context Protocol <a name="mcp"></a>
-https://www.anthropic.com/engineering/building-effective-agents
+A Tool represents a specific capability provided to an AI agent, enabling it to perform actions and interact with the world beyond its core text generation and reasoning abilities.
 
-## Agent Frameworks <a name="agentframework"></a>
+- Function Tool: Transforming a function into a tool is a straightforward way to integrate custom logic into your agents.
+- Agent-as-Tool: This powerful feature allows you to leverage the capabilities of other agents within your system by calling them as tools. The Agent-as-a-Tool enables you to invoke another agent to perform a specific task, effectively delegating responsibility.
+- Google ADK Built-in-Tools: These built-in tools provide ready-to-use functionality such as Google Search or code executors that provide agents with common capabilities. 
+- Langchain Tools: Also used in Google ADK as Langchain Tools.
+  - https://python.langchain.com/docs/integrations/tools/
+- CrewAI Tools: Also used in Google ADK as CrewAI Tools.
+  - https://docs.crewai.com/concepts/tools
+- MCP Tools: Connects MCP server apps to MCP Clients (Claude App, VSCode, etc,) or Agents (Google ADK).
+  - MCP Servers: https://github.com/modelcontextprotocol/servers
+  
+### MCP: Model Context Protocol <a name="mcp"></a>
+- The Model Context Protocol (MCP) is an open standard designed to standardize how Large Language Models (LLMs) like Gemini and Claude communicate with external applications, data sources, and tools
+- MCP follows a client-server architecture, defining how data (resources), interactive templates (prompts), and actionable functions (tools) are exposed by an MCP server and consumed by an MCP client (which could be an LLM host application or an AI agent).
+- https://www.anthropic.com/engineering/building-effective-agents
+
 
 ## Agent Samples 
 
 ### Sample-00: Agent with Google ADK and ADK Web <a name="agent-adk-web"></a>
+It shows first agent implementation with Google UI ADK Web wit 
 
 ### Sample-01: Agent Container with Google ADK, FastAPI, Streamlit GUI <a name="agent-adk-container-streamlit"></a>
 
@@ -141,6 +211,13 @@ https://www.anthropic.com/engineering/building-effective-agents
 
 ### Sample-05: Agent LiteLLM - AWS Bedrock (Llama3.1-405B), Ollama with Streamlit GUI  <a name="agent-litellm-bedrock-ollama"></a>
 
+### Sample-06: Multi-Agent Sequential, Streamlit GUI  <a name="multi-agent-sequential"></a>
+
+### Sample-07: Multi-Agent Parallel, Streamlit GUI  <a name="multi-agent-parallel"></a>
+
+### Sample-08: Multi-Agent Loop, Streamlit GUI  <a name="multi-agent-loop"></a>
+
+### Sample-09: Multi-Agent Hierarchy, Streamlit GUI  <a name="multi-agent-hierarchy"></a>
 
 ## General LLM Projects <a name="projects"></a>
 

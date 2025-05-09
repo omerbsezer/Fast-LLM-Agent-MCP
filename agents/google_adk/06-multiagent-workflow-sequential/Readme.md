@@ -1,4 +1,4 @@
-## Multi-Agent Sequential, Streamlit UI
+## Multi-Agent Sequential, Streamlit GUI
 
 The agents will run in the order provided: 
 
