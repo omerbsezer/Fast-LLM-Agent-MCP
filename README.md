@@ -239,35 +239,35 @@ A Tool represents a specific capability provided to an AI agent, enabling it to 
 ### Sample-00: Agent with Google ADK and ADK Web <a name="agent-adk-web"></a>
 It shows first agent implementation with Google UI ADK Web and Gemini API key.
 
-Link: https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/00-first-agent-with-adk-web
+- **Link:** https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/00-first-agent-with-adk-web
 
 ![sample-00](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/blob/main/agents/google_adk/00-first-agent-with-adk-web/gif/weather-time-agent-adk.gif)
 
 ### Sample-01: Agent Container with Google ADK, FastAPI, Streamlit GUI <a name="agent-adk-container-streamlit"></a>
 Customized front-end app with streamlit and dockerized backend-app using FastAPI to communicate both Gemini LLM and front-end.
 
-Link: https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/01-agent-function-tools-container-streamlit
+- **Link:** https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/01-agent-function-tools-container-streamlit
 
 ![sample-01](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/blob/main/agents/google_adk/01-agent-function-tools-container-streamlit/gif/weather-time-agent-container-streamlit.gif)
 
 ### Sample-02: Agent Local MCP Tool (FileServer) with Google ADK, FastAPI, Streamlit GUI  <a name="agent-local-mcp-fileOps-streamlit"></a>
 It shows how to run local MCP tool with Gemini.
 
-Link: https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/02-agent-local-mcp-fileOps-streamlit
+- **Link:** https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/02-agent-local-mcp-fileOps-streamlit
 
 ![sample-02](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/blob/main/agents/google_adk/02-agent-local-mcp-fileOps-streamlit/gif/agent-local-mcp-streamlit.gif)
 
 ### Sample-03: Agent Remote MCP Tool (Web Search: Serper) with Google ADK, FastAPI, Streamlit GUI  <a name="agent-remote-mcp-google-search-serper"></a>
 It shows how to run remote MCP tool with Gemini.
 
-Link: https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/03-agent-remote-mcp-google-search-serper
+- **Link:** https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/03-agent-remote-mcp-google-search-serper
 
 ![sample-03](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/blob/main/agents/google_adk/03-agent-remote-mcp-google-search-serper/gif/agent-remote-mcp-google-search-serper.gif)
 
 ### Sample-04: Agent Memory and Builtin Google Search Tool with Streamlit GUI  <a name="agent-memory-builtin-search-tool"></a>
 It shows how to run built-in tool Google Search and Agent Memory.
 
-Link: https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/04-agent-memory-builtin-search-tool
+- **Link:** https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/04-agent-memory-builtin-search-tool
 
 **With Memory:**
 ![sample-04-with-memory](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/blob/main/agents/google_adk/04-agent-memory-builtin-search-tool/gif/agent-with-memory.gif)
@@ -279,35 +279,35 @@ Link: https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_a
 ### Sample-05: Agent LiteLLM - AWS Bedrock (Llama3.1-405B), Ollama with Streamlit GUI  <a name="agent-litellm-bedrock-ollama"></a>
 It shows how to connect Llama 3.1 405B on AWS Bedrock and Ollama Llama3.2:1b running on local PC using Litellm.
 
-Link: https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/05-agent-litellm-bedrock-ollama
+- **Link:** https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/05-agent-litellm-bedrock-ollama
 
 ![sample-05](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/blob/main/agents/google_adk/05-agent-litellm-bedrock-ollama/gif/agent-bedrock-llama3.1-405.gif)
 
 ### Sample-06: Multi-Agent Sequential, Streamlit GUI  <a name="multi-agent-sequential"></a>
 It shows how to implement multi-agent sequential workflow.
 
-Link:  https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/06-multiagent-workflow-sequential
+- **Link:**  https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/06-multiagent-workflow-sequential
 
 ![sample-06](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/blob/main/agents/google_adk/06-multiagent-workflow-sequential/gif/multi-agent-sequential.gif)
 
 ### Sample-07: Multi-Agent Parallel, Streamlit GUI  <a name="multi-agent-parallel"></a>
 It shows how to implement multi-agent parallel workflow.
 
-Link: https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/07-multiagent-workflow-parallel
+- **Link:** https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/07-multiagent-workflow-parallel
 
 ![sample-07](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/blob/main/agents/google_adk/07-multiagent-workflow-parallel/gif/multi-agent-parallel-merger.gif)
 
 ### Sample-08: Multi-Agent Loop, Streamlit GUI  <a name="multi-agent-loop"></a>
 It shows how to implement multi-agent loop workflow.
 
-Link: https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/08-multiagent-loop
+- **Link:** https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/08-multiagent-loop
 
 ![sample-08](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/blob/main/agents/google_adk/08-multiagent-loop/gif/multi-agent-loop-code-checker.gif)
 
 ### Sample-09: Multi-Agent Hierarchy, Streamlit GUI  <a name="multi-agent-hierarchy"></a>
 It shows how to implement multi-agent hierarchy runs.
 
-Link: https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/09-multiagent-hierarchy
+- **Link:** https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/09-multiagent-hierarchy
 
 
 ## LLM Projects <a name="llm-projects"></a>
@@ -315,16 +315,16 @@ Link: https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_a
 ### Project-01: AI Content Detector with AWS Bedrock, Llama 3.1 405B <a name="ai-content-detector"></a>
 It shows how to implement AI Content Detector with AWS Bedrock, Llama 3.1 405B and prompt templating power.
 
-Link: https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/projects/Project1-AI-Content-Detector-AWS-Bedrock
+- **Link:** https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/projects/Project1-AI-Content-Detector-AWS-Bedrock
 
-![project-01]()
+![project-01](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/blob/main/projects/Project1-AI-Content-Detector-AWS-Bedrock/gif/text-devto-human-analysis.gif)
 
 ### Project-02: LLM with Model Context Protocol (MCP) using PraisonAI, Ollama, LLama 3.2:1B and LLama 3.1:8B <a name="localllm-mcp-praisonai"></a>
 It shows how to implement MCP remote tools using PraisonAI, Ollama LLama 3.2:1B and LLama 3.1:8B.
 
-Link: https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/projects/Project2-MCP-Agent-Ollama
+- **Link:** https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/projects/Project2-MCP-Agent-Ollama
 
-![project-02]()
+![project-02](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/blob/main/projects/Project2-MCP-Agent-Ollama/gif/serper-ask.gif)
 
 ## Other Useful Resources Related LLMs, Agents, MCPs <a name="other-resources"></a>
 - https://www.promptingguide.ai/
