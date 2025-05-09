@@ -1,5 +1,11 @@
 ## Agent Local MCP Tool, Container, Streamlit UI
 
+It shows how to run local MCP tool with Gemini.
+
+Link: https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/02-agent-local-mcp-fileOps-streamlit
+
+![sample-02](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/blob/main/agents/google_adk/02-agent-local-mcp-fileOps-streamlit/gif/agent-local-mcp-streamlit.gif)
+
 Please add .env with Gemini API Keys
 
 ``` 

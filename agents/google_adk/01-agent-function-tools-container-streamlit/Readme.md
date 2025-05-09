@@ -1,5 +1,11 @@
 ## Agent Container and Streamlit UI
 
+Customized front-end app with streamlit and dockerized backend-app using FastAPI to communicate both Gemini LLM and front-end.
+
+Link: https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/01-agent-function-tools-container-streamlit
+
+![sample-01](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/blob/main/agents/google_adk/01-agent-function-tools-container-streamlit/gif/weather-time-agent-container-streamlit.gif)
+
 ## Container
 Before creating image on agent, pls add .env with Gemini API Keys
 

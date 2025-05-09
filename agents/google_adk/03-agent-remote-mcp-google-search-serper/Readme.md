@@ -1,5 +1,12 @@
 ## Agent Remote MCP Tool, Web Search with Serper, Streamlit UI
 
+It shows how to run remote MCP tool with Gemini.
+
+Link: https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/03-agent-remote-mcp-google-search-serper
+
+![sample-03](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/blob/main/agents/google_adk/03-agent-remote-mcp-google-search-serper/gif/agent-remote-mcp-google-search-serper.gif)
+
+
 Please add .env with Gemini and Serper API Keys 
 
 ``` 
