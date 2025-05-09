@@ -115,7 +115,6 @@ RAG Popular/Common Tools:
   - Redis,
 - Frameworks: 
    - LangChain: https://python.langchain.com/docs/introduction/
-   - LlamaIndex: https://www.llamaindex.ai/
 
 ## Fine Tuning <a name="finetuning"></a>
 Fine-tuning is the process of adapting a pre-trained LLM model  to a specific task or domain by further training it on a smaller, specialized dataset. The goal is to make the model better at handling particular requirements without starting from scratch.
@@ -153,12 +152,12 @@ LLM (Large Language Model) Application Frameworks and Libraries are tools design
 Agent frameworks are specialized software tools or libraries designed to build, manage, and orchestrate LLM-based agents. These frameworks help you create intelligent agents that can autonomously reason, plan, and act using external tools or in coordination with other agents.
 
 What Do Agent Frameworks Provide?
-- Agent Abstractions: Define agent identity, goals, memory, behavior, and permissions.
-- Tool Interfaces: Register external tools (APIs, functions, databases, etc.) agents can use.
-- Execution Logic: Handle planning, decision-making, tool-calling, retries, and feedback loops.
-- Multi-Agent Orchestration: Manage communication and task delegation among multiple agents.
-- Memory & Context: Enable persistent memory, history tracking, and contextual reasoning.
-- Observability: Offer tracing, logging, and step-by-step reasoning outputs for debugging.
+- **Agent Abstractions:** Define agent identity, goals, memory, behavior, and permissions.
+- **Tool Interfaces:** Register external tools (APIs, functions, databases, etc.) agents can use.
+- **Execution Logic:** Handle planning, decision-making, tool-calling, retries, and feedback loops.
+- **Multi-Agent Orchestration:** Manage communication and task delegation among multiple agents.
+- **Memory & Context:** Enable persistent memory, history tracking, and contextual reasoning.
+- **Observability:** Offer tracing, logging, and step-by-step reasoning outputs for debugging.
 
 ### Google Agent Development Kit <a name="adk"></a>
 
@@ -189,12 +188,10 @@ https://ai.pydantic.dev/
 An LLM agent is an autonomous or semi-autonomous system that uses a large language model (like GPT, Claude, or Gemini) to reason, make decisions, and take actions using external tools or APIs to accomplish a goal.
 
 An LLM agent typically includes:
-- LLM Core: The brain that interprets tasks and generates reasoning.
-- Memory (optional): Stores history of actions, inputs, and outputs for context-aware behavior.
-- Tools: External APIs, databases, web search, code execution, or custom functions the agent can call.
-- Environment: The runtime or framework (e.g., LangChain, CrewAI, Google ADK) in which the agent operates.
-
-
+- **LLM Core:** The brain that interprets tasks and generates reasoning.
+- **Memory (optional):** Stores history of actions, inputs, and outputs for context-aware behavior.
+- **Tools:** External APIs, databases, web search, code execution, or custom functions the agent can call.
+- **Environment:** The runtime or framework (e.g., LangChain, CrewAI, Google ADK) in which the agent operates.
 
 ```
 # Define a tool function
@@ -218,14 +215,14 @@ capital_agent = LlmAgent(
 
 A Tool represents a specific capability provided to an AI agent, enabling it to perform actions and interact with the world beyond its core text generation and reasoning abilities.
 
-- Function Tool: Transforming a function into a tool is a straightforward way to integrate custom logic into your agents.
-- Agent-as-Tool: This powerful feature allows you to leverage the capabilities of other agents within your system by calling them as tools. The Agent-as-a-Tool enables you to invoke another agent to perform a specific task, effectively delegating responsibility.
-- Google ADK Built-in-Tools: These built-in tools provide ready-to-use functionality such as Google Search or code executors that provide agents with common capabilities. 
-- Langchain Tools: Also used in Google ADK as Langchain Tools.
+- **Function Tool:** Transforming a function into a tool is a straightforward way to integrate custom logic into your agents.
+- **Agent-as-Tool:** This powerful feature allows you to leverage the capabilities of other agents within your system by calling them as tools. The Agent-as-a-Tool enables you to invoke another agent to perform a specific task, effectively delegating responsibility.
+- **Google ADK Built-in-Tools:** These built-in tools provide ready-to-use functionality such as Google Search or code executors that provide agents with common capabilities. 
+- **Langchain Tools:** Also used in Google ADK as Langchain Tools.
   - https://python.langchain.com/docs/integrations/tools/
-- CrewAI Tools: Also used in Google ADK as CrewAI Tools.
+- **CrewAI Tools:** Also used in Google ADK as CrewAI Tools.
   - https://docs.crewai.com/concepts/tools
-- MCP Tools: Connects MCP server apps to MCP Clients (Claude App, VSCode, etc,) or Agents (Google ADK).
+- **MCP Tools:** Connects MCP server apps to MCP Clients (Claude App, VSCode, etc,) or Agents (Google ADK).
   - MCP Servers: https://github.com/modelcontextprotocol/servers
   
 ### MCP: Model Context Protocol <a name="mcp"></a>
@@ -335,7 +332,5 @@ It shows how to implement MCP remote tools using PraisonAI, Ollama LLama 3.2:1B 
 - https://developer.nvidia.com/blog/category/generative-ai/
 - https://huggingface.co/
 
-
-
 ## References <a name="references"></a>
-
+- https://google.github.io/adk-docs/
