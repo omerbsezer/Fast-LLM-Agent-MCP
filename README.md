@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/omerbsezer-fast-llm-agent-mcp-badge.png)](https://mseep.ai/app/omerbsezer-fast-llm-agent-mcp)
+
 # Fast LLM & Agents & MCPs
 This repo covers LLM, Agents, MCP Tools concepts both theoretically and practically:
 - LLM Architectures, RAG, Fine Tuning, Agents, Tools, MCP, Agent Frameworks, Reference Documents.
