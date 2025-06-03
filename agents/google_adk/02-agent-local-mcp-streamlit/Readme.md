@@ -27,8 +27,10 @@ python -m streamlit run app.py
 
 ## PROMPTS
 
+```
 - list the files in the '/home/omer/mcp-test'
 - create test2.py in the '/home/omer/mcp-test' and write 'print("Added by MCP Tool: @modelcontextprotocol/server-filesystem")' in it.
 - read test2.py in the '/home/omer/mcp-test'
 - run the test2.py '/home/omer/mcp-test' with "python test2.py"
 - delete the test2.py '/home/omer/mcp-test'
+```
