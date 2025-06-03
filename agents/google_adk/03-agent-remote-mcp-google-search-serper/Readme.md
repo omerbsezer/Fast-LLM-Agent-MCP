@@ -1,4 +1,4 @@
-## Agent Local MCP Tool, Container, Streamlit UI
+## Agent Remote MCP Tool, Web Search with Serper, Streamlit UI
 
 Please add .env with Gemini and Serper API Keys 
 
