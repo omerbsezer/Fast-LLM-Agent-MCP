@@ -169,8 +169,8 @@ What Do Agent Frameworks Provide?
 
 CrewAI is  Python framework built entirely from scratch—completely independent of LangChain or other agent frameworks. CrewAI empowers developers with both high-level simplicity and precise low-level control, ideal for creating autonomous AI agents tailored to any scenario:
 
-- CrewAI Crews: Optimize for autonomy and collaborative intelligence, enabling you to create AI teams where each agent has specific roles, tools, and goals.
-- CrewAI Flows: Enable granular, event-driven control, single LLM calls for precise task orchestration and supports Crews natively.
+- **CrewAI Crews:** Optimize for autonomy and collaborative intelligence, enabling you to create AI teams where each agent has specific roles, tools, and goals.
+- **CrewAI Flows:** Enable granular, event-driven control, single LLM calls for precise task orchestration and supports Crews natively.
 - https://docs.crewai.com/introduction
 
 ### PraisonAI Agents <a name="praisonai"></a> 
