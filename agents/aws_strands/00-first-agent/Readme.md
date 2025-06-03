@@ -1,18 +1,17 @@
-## First Agent with AWS Strands
-It shows first agent implementation with AWS Strands.
+## First Agent with AWS Strands Agents
+It shows first agent implementation with AWS Strands Agents.
 
 Please run Python files on Linux, or WSL on Win.
 
-Install aws strands:
+Install AWS Strands Agents:
 - pip install strands-agents
 - pip install strands-agents-tools strands-agents-builder
 
 
 ### AWS Bedrock Model 
-First, to enable in ypur region or AWS-West for Model Access (AWS Bedrock > Bedrock Configuration > Model Access > Nova Pro, or Claude 3.7 Sonnet, or Llama 4)
-In these samples, we'll use AWS Nova Pro, because it's served in different regions by AWS. After model access, give permission to your IAM to access AWS Bedrock services. 
-
-2 Options to reach AWS Bedrock Model using your AWS Account:
+- First, to enable in your region or AWS-West for Model Access (AWS Bedrock > Bedrock Configuration > Model Access > Nova Pro, or Claude 3.7 Sonnet, or Llama 4)
+- In these samples, we'll use AWS Nova Pro, because it's served in different regions by AWS. After model access, give permission to your IAM to access AWS Bedrock services. 
+- 2 Options to reach AWS Bedrock Model using your AWS Account:
 
 #### 1. AWS Config
 - With 'aws configure', to create 'config' and 'credentials' files
@@ -35,4 +34,4 @@ python3 -u my_agent/agent.py
 
 
 ### Reference
-https://google.github.io/adk-docs/get-started/quickstart/#env
+https://strandsagents.com/
