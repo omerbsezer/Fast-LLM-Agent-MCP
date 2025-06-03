@@ -46,8 +46,6 @@ python -m streamlit run app.py
 
 ```
 - I want to search "what is AWS Strands Agents?" on Google using Serper.
-- what is the score of the latest match of Real Madrid? 
-- what is the score of the latest match of Barcelona?
 ```
 
 ### Reference
