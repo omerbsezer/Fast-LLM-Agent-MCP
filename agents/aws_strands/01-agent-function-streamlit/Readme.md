@@ -24,7 +24,6 @@ AWS_ACCESS_KEY_ID= PASTE_YOUR_ACCESS_KEY_ID_HERE
 AWS_SECRET_ACCESS_KEY=PASTE_YOUR_SECRET_ACCESS_KEY_HERE
 ``` 
 
-
 ### Run Agent
 
 Please run non-root username. 
@@ -46,7 +45,7 @@ python -m streamlit run app.py
 ### Prompts
 
 ```
-
+- what is AWS?
 ```
 
 ### Reference

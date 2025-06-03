@@ -22,10 +22,9 @@ def letter_counter(word: str, letter: str) -> int:
 
 agent = Agent(
     model=bedrock_model, 
-    system_prompt='Help user interact with the local filesystem using available tools. \n'
+    system_prompt='Help user interact using available tools. \n'
         '- For all other questions, respond using your own knowledge.',
     tools=[calculator, current_time, python_repl, letter_counter])
-
 
 app = FastAPI()
 class QueryRequest(BaseModel):
