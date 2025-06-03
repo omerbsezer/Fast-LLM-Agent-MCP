@@ -21,8 +21,8 @@ This repo covers LLM concepts both theoretically and practically (sample project
   - [Tools](#agenttools)
   - [MCP: Model Context Protocol](#mcp)
 - [Agent Frameworks](agentframework)
-  - [CrewAI]
-  - [PraisonAI Agents] 
+  - [CrewAI](#crewai)
+  - [PraisonAI Agents](#praisonai) 
 - [LLM Sample Projects](#samples)
   - [Sample1: AI Content Detector with AWS Bedrock, Llama 3.1 405B](#ai-content-detector)
   - [Sample2: Multi Agent Implementation using CrewAI, AWS Bedrock, Llama 3.1 405B](#multiagent-crewai)
