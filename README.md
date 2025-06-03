@@ -1,9 +1,17 @@
 # Fast LLM & Agents & MCPs
 This repo covers LLM, Agents, MCP Tools concepts both theoretically and practically:
 - LLM Architectures, RAG, Fine Tuning, Agents, Tools, MCP, Agent Frameworks, Reference Documents.
-- Agent Sample Codes with Google Agent Development Kit (ADK).
+- Agent Sample Codes with **AWS Strands Agents**.
+- Agent Sample Codes with **Google Agent Development Kit (ADK)**.
 
-# Agent Sample Code & Projects
+# AWS Strands - Agent Sample Code & Projects
+- [Sample-00: First Agent with AWS Strands Agents](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/aws_strands/00-first-agent-strands)
+- [Sample-01: Agent Strands with Streamlit UI](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/aws_strands/01-agent-strands-function-streamlit)
+- [Sample-02: Agent Strands Local MCP FileOps, Streamlit](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/aws_strands/02-agent-strands-local-mcp-fileOps-streamlit)
+- [Sample-03: Agent Strands, Remote MCP Serper Google Search Tool with Streamlit](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/aws_strands/03-agent-strands-remote-mcp-serper-streamlit)
+
+
+# Google ADK - Agent Sample Code & Projects
 - [Sample-00: Agent with Google ADK and ADK Web](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/00-first-agent-with-adk-web)
 - [Sample-01: Agent Container with Google ADK, FastAPI, Streamlit GUI](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/01-agent-function-tools-container-streamlit)
 - [Sample-02: Agent Local MCP Tool (FileServer) with Google ADK, FastAPI, Streamlit GUI](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/02-agent-local-mcp-fileOps-streamlit)
@@ -36,7 +44,7 @@ This repo covers LLM, Agents, MCP Tools concepts both theoretically and practica
   - [Tools](#agenttools)
   - [MCP: Model Context Protocol](#mcp)
   - [A2A: Agent to Agent Protocol](#a2a)
-- [Agent Samples](#samples)
+- [Google ADK - Agent Samples](#samples)
   - [Sample-00: Agent with Google ADK and ADK Web](#agent-adk-web)
   - [Sample-01: Agent Container with Google ADK, FastAPI, Streamlit GUI](#agent-adk-container-streamlit)
   - [Sample-02: Agent Local MCP Tool (FileServer) with Google ADK, FastAPI, Streamlit GUI](#agent-local-mcp-fileOps-streamlit)

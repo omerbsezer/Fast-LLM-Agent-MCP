@@ -1,4 +1,4 @@
-## First Agent with AWS Strands Agents
+## Agent Strands with Streamlit UI
 It shows first agent implementation with AWS Strands Agents.
 
 Please run Python files on Linux, or WSL on Win.
