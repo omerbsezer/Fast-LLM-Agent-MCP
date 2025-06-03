@@ -47,7 +47,7 @@ This repo covers LLM, Agents, MCP Tools concepts both theoretically and practica
   - [Sample-07: Multi-Agent Parallel, Streamlit GUI](#multi-agent-parallel)
   - [Sample-08: Multi-Agent Loop, Streamlit GUI](#multi-agent-loop)
   - [Sample-09: Multi-Agent Hierarchy, Streamlit GUI](#multi-agent-hierarchy)
- - [LLM Projects](#llm-projects)
+- [LLM Projects](#llm-projects)
   - [Project1: AI Content Detector with AWS Bedrock, Llama 3.1 405B](#ai-content-detector)
   - [Project2: LLM with Model Context Protocol (MCP) using PraisonAI, Ollama, LLama 3.1 1B,8B](#localllm-mcp-praisonai)
 - [Other Useful Resources Related LLMs, Agents, MCPs](#other-resources)
