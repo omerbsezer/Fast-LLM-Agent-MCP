@@ -6,19 +6,13 @@ st.set_page_config(page_title="AWS Strands Agent Chat", layout="centered")
 
 st.title("AWS Strands Agent")
 
-user_query = st.chat_input("Ask for system file tool commands or anything...")
-
 # initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# display chat history
-for msg in st.session_state.messages:
-    st.chat_message(msg["role"]).markdown(msg["content"])
-
+user_query = st.chat_input("Ask for system file tool commands or anything...")
 
 if user_query:
-    st.chat_message("user").markdown(user_query)
     st.session_state.messages.append({"role": "user", "content": user_query})
 
     try:
@@ -31,5 +25,8 @@ if user_query:
     except Exception as e:
         assistant_text = f"Error: {str(e)}"
 
-    st.chat_message("assistant").markdown(assistant_text)
     st.session_state.messages.append({"role": "assistant", "content": assistant_text})
+
+# display all messages in order
+for msg in st.session_state.messages:
+    st.chat_message(msg["role"]).markdown(msg["content"])    
