@@ -89,7 +89,7 @@ RAG Popular/Common Tools:
   - Milvus, 
   - ElasticsearchStore,
   - Redis,
-Frameworks: 
+- Frameworks: 
    - LangChain: https://python.langchain.com/docs/introduction/
    - LlamaIndex: https://www.llamaindex.ai/
 
