@@ -1,15 +1,7 @@
-# Fast-LLM
-This repo covers LLM concepts both theoretically and practically (sample projects): LLM Architectures, RAG, Fine Tuning, Agents, Tools, MCP, Agent Frameworks, Reference Documents.
-
-## Why was this repo created?
-- It **shows/maps LLM models & apps in short**.  
-- It shows **LLM sample projects** on on-prem, using APIs.
-- It contributes to **open source community**.
-
+# Fast LLM & Agents & MCPs
+This repo covers LLM concepts both theoretically and practically:
+- LLM Architectures, RAG, Fine Tuning, Agents, Tools, MCP, Agent Frameworks, Reference Documents.
   
-# LLM Sample Projects
-
-
 # Table of Contents
 - [Motivation](#motivation)
 - [LLM Architecture & LLM Models](#llm)
@@ -20,19 +12,21 @@ This repo covers LLM concepts both theoretically and practically (sample project
    - [LangChain](#langchain)
    - [LangGraph](#langgraph)
    - [LLamaIndex](#llamaindex)
-   - [PydanticAI](#pydanticai) 
+   - [PydanticAI](#pydanticai)
 - [Agents](#llmagents)
   - [Tools](#agenttools)
   - [MCP: Model Context Protocol](#mcp)
+  - [A2A: Agent to Agent Protocol](#a2a)
 - [Agent Frameworks](agentframework)
+  - [Google Agent Development Kit](#adk) 
   - [CrewAI](#crewai)
   - [PraisonAI Agents](#praisonai) 
-- [LLM Sample Projects](#samples)
-  - [Sample1: AI Content Detector with AWS Bedrock, Llama 3.1 405B](#ai-content-detector)
-  - [Sample2: Multi Agent Implementation using CrewAI, AWS Bedrock, Llama 3.1 405B](#multiagent-crewai)
-  - [Sample3: LLM with Model Context Protocol (MCP) using PraisonAI, Ollama, LLama 3.1 1B,8B](#localllm-mcp-praisonai)
-  - [Sample4: Different Agent Patterns using PraisonAI, Ollama, LLama 3.1 1B,8B](#agent-patterns)
-- [Other Useful Resources Related LLMs](#other-resources)
+- [Samples Projects](#samples)
+  - [Project1: AI Content Detector with AWS Bedrock, Llama 3.1 405B](#ai-content-detector)
+  - [Project2: LLM with Model Context Protocol (MCP) using PraisonAI, Ollama, LLama 3.1 1B,8B](#localllm-mcp-praisonai)
+  - [Project3: Agent with Google ADK and ADK Web](#agent-adk-web)
+  - [Project4: Agent Container with Google ADK, FastAPI, Streamlit](#agent-adk-container-streamlit)
+- [Other Useful Resources Related LLMs, Agents, MCPs](#other-resources)
 - [References](#references)
 
 ## Motivation <a name="motivation"></a>
@@ -59,9 +53,17 @@ https://www.anthropic.com/engineering/building-effective-agents
 ## Agent Frameworks <a name="agentframework"></a>
 
 
-## LLM Sample Projects <a name="samples"></a>
+## Sample Projects <a name="samples"></a>
 
-## Other Useful Resources Related LLMs <a name="other-resources"></a>
+### Project1: AI Content Detector with AWS Bedrock, Llama 3.1 405B <a name="ai-content-detector"></a>
+
+### Project2: LLM with Model Context Protocol (MCP) using PraisonAI, Ollama, LLama 3.1 1B,8B <a name="localllm-mcp-praisonai"></a>
+
+### Project3: Agent with Google ADK and ADK Web <a name="agent-adk-web"></a>
+
+### Project4: Agent Container with Google ADK, FastAPI, Streamlit <a name="agent-adk-container-streamlit"></a>
+
+## Other Useful Resources Related LLMs, Agents, MCPs <a name="other-resources"></a>
 - https://www.promptingguide.ai/
 - https://python.langchain.com/docs/introduction/
 - https://docs.crewai.com/
