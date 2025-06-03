@@ -1,5 +1,5 @@
-## Agent Strands Local MCP FileOps, Streamlit
-It shows local mcp fileOps with AWS Strands.
+## Agent Strands, Remote MCP Serper Google Search Tool with Streamlit
+It shows remote MCP Serper Google Search tool with AWS Strands Agents.
 
 Please run Python files on Linux, or WSL on Win.
 
