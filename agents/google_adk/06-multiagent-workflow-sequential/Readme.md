@@ -1,5 +1,12 @@
 ## Multi-Agent Sequential, Streamlit GUI
 
+It shows how to implement multi-agent sequential workflow.
+
+Link:  https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/06-multiagent-workflow-sequential
+
+![sample-06](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/blob/main/agents/google_adk/06-multiagent-workflow-sequential/gif/multi-agent-sequential.gif)
+
+
 The agents will run in the order provided: 
 
 ```

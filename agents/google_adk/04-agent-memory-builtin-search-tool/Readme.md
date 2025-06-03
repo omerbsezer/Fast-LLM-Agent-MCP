@@ -1,5 +1,16 @@
 ## Agent with Memory, Google Search Built-in Tools, Streamlit UI
 
+It shows how to run built-in tool Google Search and Agent Memory.
+
+Link: https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/04-agent-memory-builtin-search-tool
+
+**With Memory:**
+![sample-04-with-memory](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/blob/main/agents/google_adk/04-agent-memory-builtin-search-tool/gif/agent-with-memory.gif)
+
+
+**Without Memory:**
+![sample-04-without-memory](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/blob/main/agents/google_adk/04-agent-memory-builtin-search-tool/gif/agent-without-memory.gif)
+
 Please add .env with Gemini  
 
 ``` 

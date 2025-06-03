@@ -1,5 +1,11 @@
 ## Multi-Agent Parallel and Merger,  Streamlit UI
 
+It shows how to implement multi-agent parallel workflow.
+
+Link: https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/07-multiagent-workflow-parallel
+
+![sample-07](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/blob/main/agents/google_adk/07-multiagent-workflow-parallel/gif/multi-agent-parallel-merger.gif)
+
 The agents will run in the order provided: 
 
 ```
