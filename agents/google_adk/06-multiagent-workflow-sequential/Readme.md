@@ -21,6 +21,17 @@ GOOGLE_GENAI_USE_VERTEXAI=FALSE
 GOOGLE_API_KEY=PASTE_YOUR_ACTUAL_API_KEY_HERE
 ``` 
 
+## Install, Update Libraries
+Install first time:
+```
+pip install -r requirements.txt
+```
+
+Update:
+```
+pip install --upgrade fastapi uvicorn google-adk google-generativeai
+```
+
 ## Run Agent
 
 Please run non-root username. 

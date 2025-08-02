@@ -14,7 +14,7 @@ APP_NAME = "search_memory_app"
 USER_ID = "user123"
 SESSION_ID = "session123"
 
-MODEL = "gemini-2.5-flash-preview-04-17"
+MODEL = "gemini-2.5-flash"
 #MODEL="gemini-2.0-flash"
 
 def create_agent() -> Agent:

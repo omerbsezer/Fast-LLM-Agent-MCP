@@ -1,0 +1,54 @@
+## Agent Strands, Session Management on Sqlite.DB
+It shows how to store sessions info on Sqlite.DB.
+
+### AWS Bedrock Model 
+- First, to enable in your region or AWS-West for Model Access (AWS Bedrock > Bedrock Configuration > Model Access > Nova Pro, or Claude 4 Sonnet, or Llama 4)
+- In these samples, we'll use AWS Nova Pro, because it's served in different regions by AWS. After model access, give permission to your IAM to access AWS Bedrock services. 
+- 2 Options to reach AWS Bedrock Model using your AWS Account:
+
+#### 1. AWS Config
+- With 'aws configure', to create 'config' and 'credentials' files
+
+#### 2. Getting variables using .env file
+Add .env file:
+
+``` 
+AWS_ACCESS_KEY_ID= PASTE_YOUR_ACCESS_KEY_ID_HERE
+AWS_SECRET_ACCESS_KEY=PASTE_YOUR_SECRET_ACCESS_KEY_HERE
+``` 
+### Install, Update Libraries
+
+Install first time:
+```
+pip install -r requirements.txt
+```
+
+Update:
+```
+pip install --upgrade fastapi uvicorn "strands-agents>=1.2.0" "strands-agents-tools>=0.2.3"
+```
+
+### Run Agent
+
+Please run non-root username. 
+
+```
+uvicorn agent:app --host 0.0.0.0 --port 8000
+```
+
+
+### GUI
+After running container, then pls run streamlit, it asks to htttp://localhost:8000/ask
+
+```
+python3 -m streamlit run app.py
+```
+
+### Prompts
+
+```
+- hi, trying to aws memory session persistence.
+```
+
+### Reference
+https://strandsagents.com/

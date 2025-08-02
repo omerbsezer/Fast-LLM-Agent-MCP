@@ -12,10 +12,7 @@ from google.adk.memory import InMemoryMemoryService
 
 load_dotenv()
 
-MODEL = "gemini-2.5-flash-preview-04-17" 
-# MODEL="gemini-2.5-pro-preview-03-25"
-# MODEL="gemini-2.0-flash"
-# MODEL="gemini-2.0-flash-lite"
+MODEL = "gemini-2.5-flash" 
 
 APP_NAME = "search_memory_app"
 USER_ID = "user123"
@@ -108,23 +105,26 @@ root_agent = code_pipeline_agent
 session_service = InMemorySessionService()
 memory_service = InMemoryMemoryService()
 
-session_service.create_session(
-    app_name=APP_NAME,
-    user_id=USER_ID,
-    session_id=SESSION_ID
-)
-
-runner = Runner(
-    agent=root_agent,
-    app_name=APP_NAME,
-    session_service=session_service,
-    memory_service=memory_service
-)
-
 app = FastAPI()
 
 class QueryRequest(BaseModel):
     query: str
+
+@app.on_event("startup")
+async def startup_event():
+    await session_service.create_session(
+        app_name=APP_NAME,
+        user_id=USER_ID,
+        session_id=SESSION_ID
+    )
+
+    global runner 
+    runner = Runner(
+        agent=root_agent,
+        app_name=APP_NAME,
+        session_service=session_service,
+        memory_service=memory_service
+    )    
 
 @app.post("/ask")
 def ask_agent(req: QueryRequest):
