@@ -1,0 +1,87 @@
+Test Prompt:
+```bash
+I want to research about the "LLM Agents"
+```
+
+Topic_setter agent gives following response:
+```json
+{"subtopic_1": "Definition and architecture of LLM Agents", 
+"subtopic_2": "Applications and use cases of LLM Agents", 
+"subtopic_3": "Challenges and future directions for LLM Agents"}
+```
+
+Research Agent1 gives response:
+```json
+LLM agents face challenges including hallucinations, limited memory and 
+context windows, and struggles with real-time decision-making and complex 
+calculations. Future directions involve developing hybrid systems 
+combining LLMs with deterministic tools for precision tasks, improving 
+continuous learning and scalability, and enhancing multi-agent 
+collaboration and ethical considerations.
+```
+
+Research Agent2:
+```json
+LLM agents are advanced AI systems that use large language models (LLMs) 
+to reason through problems, create plans, and execute tasks with the help 
+of various tools, going beyond simple text generation to handle complex, 
+multi-step assignments autonomously. Their architecture typically includes 
+a core LLM (the "brain"), memory modules for retaining context, tools for 
+external interactions (like APIs or databases), and planning components to 
+break down complex tasks and determine actions.
+```
+
+Research Agent3:
+```json
+LLM agents are utilized across various industries and applications due to 
+their ability to understand language, perform complex tasks, and interact 
+with external tools and data sources. Key applications include enhancing 
+customer service through personalized interactions and 24/7 support, and 
+streamlining internal operations such as HR and IT support. They also play 
+a significant role in automating tasks like market analysis, financial 
+reporting, supply chain management, and compliance checks by gathering and 
+evaluating vast amounts of data. Furthermore, LLM agents are valuable in 
+software development for generating code and assisting with debugging, and 
+in research and development for hypothesis testing and data analysis.
+```
+
+Merger Agent:
+```json
+Definition and architecture of LLM Agents
+LLM agents are advanced AI systems that use large language models (LLMs) 
+to reason through problems, create plans, and execute tasks with the help 
+of various tools, going beyond simple text generation to handle complex, 
+multi-step assignments autonomously. Their architecture typically includes 
+a core LLM (the "brain"), memory modules for retaining context, tools for 
+external interactions (like APIs or databases), and planning components to 
+break down complex tasks and determine actions.
+
+Applications and use cases of LLM Agents
+LLM agents are utilized across various industries and applications due to 
+their ability to understand language, perform complex tasks, and interact 
+with external tools and data sources. Key applications include enhancing 
+customer service through personalized interactions and 24/7 support, and 
+streamlining internal operations such as HR and IT support. They also play 
+a significant role in automating tasks like market analysis, financial 
+reporting, supply chain management, and compliance checks by gathering and 
+evaluating vast amounts of data. Furthermore, LLM agents are valuable in 
+software development for generating code and assisting with debugging, and 
+in research and development for hypothesis testing and data analysis.
+
+Challenges and future directions for LLM Agents
+LLM agents face challenges including hallucinations, limited memory and 
+context windows, and struggles with real-time decision-making and complex 
+calculations. Future directions involve developing hybrid systems 
+combining LLMs with deterministic tools for precision tasks, improving 
+continuous learning and scalability, and enhancing multi-agent 
+collaboration and ethical considerations.
+
+Conclusion
+LLM agents represent a significant advancement in AI, enabling autonomous 
+execution of complex, multi-step tasks by integrating LLMs with planning, 
+memory, and external tools. While offering vast potential across diverse 
+applications from customer service to software development, they currently 
+grapple with issues like hallucinations and computational limitations. 
+Future developments aim to overcome these challenges through hybrid 
+architectures, enhanced learning capabilities, and robust ethical frameworks.
+```

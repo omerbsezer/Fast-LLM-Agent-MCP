@@ -7,28 +7,27 @@ from google.adk.agents.llm_agent import LlmAgent
 from google.adk.agents.sequential_agent import SequentialAgent
 from google.adk.agents.parallel_agent import ParallelAgent
 from google.adk.runners import Runner
-from google.adk.sessions import InMemorySessionService, Session
+from google.adk.sessions import InMemorySessionService
 from google.adk.memory import InMemoryMemoryService
 from google.adk.tools import google_search
-from pydantic import BaseModel
+import uvicorn
 
-
+# Load environment variables
 load_dotenv()
 
-MODEL = "gemini-2.5-flash-preview-04-17" 
-# MODEL="gemini-2.5-pro-preview-03-25"
-# MODEL="gemini-2.0-flash"
-# MODEL="gemini-2.0-flash-lite"
-
+# Define model and app constants
+MODEL = "gemini-2.5-flash"
 APP_NAME = "search_memory_app"
 USER_ID = "user123"
 SESSION_ID = "session123"
 
+# --- Agent Definitions ---
+# the Pydantic model for the output of the TopicSetterAgent
 class TopicOutput(BaseModel):
     subtopic_1: str
     subtopic_2: str
     subtopic_3: str
-    
+
 topic_setter = LlmAgent(
     name="TopicSetterAgent",
     model=MODEL,
@@ -45,7 +44,6 @@ topic_setter = LlmAgent(
     output_schema=TopicOutput,
     output_key="topic_output"
 )
-
 
 researcher_agent_1 = LlmAgent(
     name="SubResearcherOne",
@@ -126,27 +124,37 @@ root_agent = research_pipeline
 session_service = InMemorySessionService()
 memory_service = InMemoryMemoryService()
 
-session_service.create_session(
-    app_name=APP_NAME,
-    user_id=USER_ID,
-    session_id=SESSION_ID
-)
-
-runner = Runner(
-    agent=root_agent,
-    app_name=APP_NAME,
-    session_service=session_service,
-    memory_service=memory_service
-)
-
 app = FastAPI()
 
 class QueryRequest(BaseModel):
     query: str
 
+@app.on_event("startup")
+async def startup_event():
+    """
+    Initializes the session and runner on application startup.
+    """
+    await session_service.create_session(
+        app_name=APP_NAME,
+        user_id=USER_ID,
+        session_id=SESSION_ID
+    )
+
+    global runner
+    runner = Runner(
+        agent=root_agent,
+        app_name=APP_NAME,
+        session_service=session_service,
+        memory_service=memory_service
+    )
+
 @app.post("/ask")
-def ask_agent(req: QueryRequest):
+async def ask_agent(req: QueryRequest):
+    """
+    Endpoint to send a query to the agent pipeline.
+    """
     content = types.Content(role="user", parts=[types.Part(text=req.query)])
+    # `runner.run()` is a generator, not a coroutine, so it should not be awaited.
     events = runner.run(user_id=USER_ID, session_id=SESSION_ID, new_message=content)
 
     responses = []
@@ -154,12 +162,11 @@ def ask_agent(req: QueryRequest):
         if event.is_final_response() and event.content and event.content.parts:
             responses.append(event.content.parts[0].text)
 
-    # Save session to memory after each turn
-    session = session_service.get_session(app_name=APP_NAME, user_id=USER_ID, session_id=SESSION_ID)
-    memory_service.add_session_to_memory(session)
+    # Await both the get_session and add_session_to_memory calls.
+    session = await session_service.get_session(app_name=APP_NAME, user_id=USER_ID, session_id=SESSION_ID)
+    await memory_service.add_session_to_memory(session)
 
     return {"responses": responses or ["No response received."]}
 
 if __name__ == "__main__":
-    import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
