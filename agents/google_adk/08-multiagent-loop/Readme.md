@@ -32,14 +32,13 @@ uvicorn agent:app --host 0.0.0.0 --port 8000
 After running container, then pls run streamlit, it asks to htttp://localhost:8000/ask
 
 ```
-streamlit run app.py
-or
-python -m streamlit run app.py
+python3 -m streamlit run app.py
 ```
 
 ## Prompts
 
 ```
-- I want to create a game, tic toc toe
+- I want to create a quiz app using HTML, CSS, Javascript.
+- I want to create a game, tic toc toe.
 - I want to create a game, space shuttle that shoots the rocks that are coming from top to down
 ```

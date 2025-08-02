@@ -15,8 +15,8 @@ import uvicorn
 # Load environment variables
 load_dotenv()
 
-# Define model and app constants
 MODEL = "gemini-2.5-flash"
+
 APP_NAME = "search_memory_app"
 USER_ID = "user123"
 SESSION_ID = "session123"

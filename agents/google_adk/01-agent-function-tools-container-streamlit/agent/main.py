@@ -11,10 +11,7 @@ from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
 from google.adk.tools import FunctionTool
 
-MODEL="gemini-2.5-flash-preview-04-17"
-# MODEL="gemini-2.5-pro-preview-03-25"
-# MODEL="gemini-2.0-flash"
-# MODEL="gemini-2.0-flash-lite"
+MODEL = "gemini-2.5-flash"
 
 load_dotenv()
 

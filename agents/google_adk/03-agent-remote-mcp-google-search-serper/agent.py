@@ -14,10 +14,7 @@ import os
 
 load_dotenv()
 
-MODEL = "gemini-2.5-flash-preview-04-17" 
-# # MODEL="gemini-2.5-pro-preview-03-25"
-# # MODEL="gemini-2.0-flash"
-# # MODEL="gemini-2.0-flash-lite"
+MODEL = "gemini-2.5-flash"
 
 app = FastAPI()
 
