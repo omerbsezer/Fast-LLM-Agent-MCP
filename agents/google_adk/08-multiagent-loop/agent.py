@@ -58,7 +58,6 @@ root_agent = refinement_loop
 session_service = InMemorySessionService()
 memory_service = InMemoryMemoryService()
 
-
 app = FastAPI()
 
 class QueryRequest(BaseModel):
