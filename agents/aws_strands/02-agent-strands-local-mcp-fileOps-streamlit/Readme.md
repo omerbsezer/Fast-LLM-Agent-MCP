@@ -24,6 +24,24 @@ AWS_ACCESS_KEY_ID= PASTE_YOUR_ACCESS_KEY_ID_HERE
 AWS_SECRET_ACCESS_KEY=PASTE_YOUR_SECRET_ACCESS_KEY_HERE
 ``` 
 
+#### Alternative Way
+- 'aws configure' command configures your credential and config. If not, you can add them manually.
+- In your Win "C:\Users\<username>\.aws" or in your Linux "/home/<username>/.aws", add 'config' and 'credentials' files 
+
+- credentials:
+``` 
+[default]
+aws_access_key_id = PASTE_YOUR_ACCESS_KEY_ID_HERE
+aws_secret_access_key = PASTE_YOUR_SECRET_ACCESS_KEY_HERE
+``` 
+
+- config:
+``` 
+[default]
+region = us-west-2
+output = json
+``` 
+
 ### Run Agent
 
 Please run non-root username. 
