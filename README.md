@@ -1,5 +1,5 @@
 # Fast LLM & Agents & MCPs
-This repo covers LLM, Agents, MCP Tools concepts both theoretically and practically:
+This repo covers LLM, Agents, MCP Tools, Skills concepts both theoretically and practically:
 - LLM Architectures, RAG, Fine Tuning, Agents, Tools, MCP, Agent Frameworks, Reference Documents.
 - Agent Sample Codes with **LangChain & LangGraph (> v1.0.0, prod. version)**.
 - Agent Sample Codes with **AWS Strands Agents**.
