@@ -115,20 +115,20 @@ Why RAG Is Important:
 - **Scalable for enterprise:** Used in chatbots, search, document QA, agents.
 
 RAG Popular/Common Tools:
-- Embedding models: https://python.langchain.com/docs/integrations/text_embedding/
+- Embedding Models
   - OpenAI (text-embedding-ada-002), 
   - HuggingFace (all-MiniLM-L6-v2, sentence-transformers/all-mpnet-base-v2), 
   - AWS Titan embeddings
-- Vector stores: https://python.langchain.com/docs/integrations/vectorstores/ 
+- Reranker Models  
+- Generation Models
+- Vector stores & Databases: 
   - FAISS, 
   - Pinecone, 
   - Weaviate, 
   - Chroma, 
   - Milvus, 
-  - ElasticsearchStore,
-  - Redis,
-- Frameworks: 
-   - LangChain: https://python.langchain.com/docs/introduction/
+  - Qdrant
+
 
 ## Fine Tuning <a name="finetuning"></a>
 Fine-tuning is the process of adapting a pre-trained LLM model  to a specific task or domain by further training it on a smaller, specialized dataset. The goal is to make the model better at handling particular requirements without starting from scratch.
