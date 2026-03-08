@@ -1,4 +1,0 @@
-json
-streamlit 
-boto3 
-python-dotenv
