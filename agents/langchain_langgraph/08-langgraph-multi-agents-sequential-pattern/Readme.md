@@ -1,4 +1,5 @@
-## First Agent with Langchain
+## LangGraph Multi Agents Sequential Pattern
+
 It shows first agent implementation with Langchain.
 
 Please run Python files on Linux, or WSL on Win.

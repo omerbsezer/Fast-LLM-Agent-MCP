@@ -1,4 +1,4 @@
-## First Agent with Langchain
+## Basic Agent
 It shows first agent implementation with Langchain.
 
 Please run Python files on Linux, or WSL on Win.
