@@ -16,7 +16,7 @@ This repo covers LLM, Agents, MCP Tools, Skills concepts both theoretically and 
 - [Sample-07: Agent Skills](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/langchain_langgraph/07-agent-skills)
 - [Sample-08: LangGraph Multi Agents Sequential Pattern](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/langchain_langgraph/08-langgraph-multi-agents-sequential-pattern)
 - [Sample-09: LangGraph Multi Agents Generator Evaluator Pattern](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/langchain_langgraph/09-langgraph-multi-agents-generator-evaluator-pattern)
-- [Sample-10: LangGprah Multi Agents Router Pattern](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/langchain_langgraph/10-langgraph-multi-agents-router-pattern)
+- [Sample-10: LangGraph Multi Agents Router Pattern](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/langchain_langgraph/10-langgraph-multi-agents-router-pattern)
 
 # AWS Strands - Agent Sample Code & Projects
 - [Sample-00: First Agent with AWS Strands Agents](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/aws_strands/00-first-agent-strands)
