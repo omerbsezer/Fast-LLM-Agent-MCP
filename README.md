@@ -39,6 +39,11 @@ This repo covers LLM, Agents, MCP Tools, Skills concepts both theoretically and 
 # Table of Contents
 - [Motivation](#motivation)
 - [LLM Architecture & LLM Models](#llm)
+   - [API (from AI & Cloud providers](#api)
+   - [Local](#local)
+      - [Ollama](#ollama)
+      - [HuggingFace](#hf)
+      - [LLM Serving with vLLM](#vllm)
 - [Prompt Engineering](#promptengineering)
 - [RAG: Retrieval-Augmented Generation](#rag)
 - [Fine Tuning](#finetuning)
@@ -84,6 +89,30 @@ LLM Core components:
 - **Feed-forward layers:** Process token-level information.
 - **Layer normalization & residuals:** Stabilize and enhance training.
 - **Output head:** predicts next token or classification result.
+
+There are 2 ways to use LLM Models: API (from AI & Cloud providers), Local
+
+### API (from AI & Cloud providers)  <a name="api"></a>
+- You can access from providers: OpenAI, Claude, Gemini, AWS Bedrock, ..
+- https://chatgpt.com/
+- https://aistudio.google.com/
+- https://platform.claude.com/
+- https://aws.amazon.com/bedrock/
+
+### Local  <a name="local"></a>
+
+#### Ollama <a name="ollama"></a>
+- The easiest way to pull/run small LLMs on your local computer.
+- https://ollama.com/
+
+#### HuggingFace <a name="hf"></a>
+- Another method is to download open source small and large LLMs from HuggingFace
+- https://huggingface.co/models
+
+#### LLM Serving with vLLM <a name="vllm"></a>
+- After downloading open source models, if you want to provide more users (>10), you should run with serving engine.
+- vLLM is a fast and easy-to-use library for LLM inference and serving.
+- https://github.com/vllm-project/vllm
 
 ## Prompt Engineering <a name="promptengineering"></a>
 - Prompt engineering is the practice of designing and refining input prompts to get the best possible responses from LLMs (Large Language Models).
