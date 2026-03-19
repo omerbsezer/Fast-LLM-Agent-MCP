@@ -3,3 +3,4 @@ langchain-aws>=1.2.0
 langgraph>=1.0.0
 python-dotenv>=1.0.0
 boto3>=1.34.0
+langfuse>=4.0.0

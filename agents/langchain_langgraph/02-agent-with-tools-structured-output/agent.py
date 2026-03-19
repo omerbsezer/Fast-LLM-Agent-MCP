@@ -1,12 +1,21 @@
-
+import os
 from pydantic import BaseModel, Field
 from typing import Literal
 from langchain_aws import ChatBedrockConverse
 from langchain_core.tools import tool
 from langchain.agents import create_agent
 from langchain.agents.structured_output import ToolStrategy
+from langfuse import Langfuse
+from langfuse.langchain import CallbackHandler
 from dotenv import load_dotenv
 load_dotenv()
+
+langfuse = Langfuse(
+    public_key = os.getenv("LANGFUSE_PUBLIC_KEY"),
+    secret_key = os.getenv("LANGFUSE_SECRET_KEY"),
+    host       = os.getenv("LANGFUSE_BASE_URL"),
+)
+langfuse_handler = CallbackHandler()
 
 # Structured output schema
 class MediaItem(BaseModel):
@@ -85,7 +94,13 @@ agent = create_agent(
 )
 
 def recommend(user_message: str) -> RecommendationResult:
-    result = agent.invoke({"messages": [{"role": "user", "content": user_message}]})
+    result = agent.invoke({
+            "messages": [{"role": "user", "content": user_message}]
+        },
+        {
+            "callbacks": [langfuse_handler]   # if you don't want to use langfuse, remove callbacks and handler
+        }
+    )
     return result["structured_response"]
 
 if __name__ == "__main__":
