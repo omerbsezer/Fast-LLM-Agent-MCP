@@ -1,6 +1,9 @@
+import os
 from langchain_aws import ChatBedrockConverse
 from langchain_core.tools import tool
 from langchain.agents import create_agent
+from langfuse import Langfuse
+from langfuse.langchain import CallbackHandler
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -15,6 +18,13 @@ A main orchestrator agent delegates to 3 specialist subagents:
 User asks: "Evaluate my startup idea: an AI-powered meal planner"
 Main agent calls all 3 subagents, then synthesises a final report.
 """
+
+langfuse = Langfuse(
+    public_key = os.getenv("LANGFUSE_PUBLIC_KEY"),
+    secret_key = os.getenv("LANGFUSE_SECRET_KEY"),
+    host       = os.getenv("LANGFUSE_BASE_URL"),
+)
+langfuse_handler = CallbackHandler()
 
 def make_llm():
     return ChatBedrockConverse(model="us.amazon.nova-pro-v1:0", temperature=0.3)
@@ -84,17 +94,26 @@ risk_subagent = create_agent(
 # Subagents as tools for the main agent 
 @tool("market_research", description="Research market size, trends, and competitors for a startup idea.")
 def call_market_agent(query: str) -> str:
-    result = market_subagent.invoke({"messages": [{"role": "user", "content": query}]})
+    result = market_subagent.invoke({
+            "messages": [{"role": "user", "content": query}]
+        }
+    )
     return result["messages"][-1].content
 
 @tool("financial_analysis", description="Estimate costs, revenue, and financial viability of a startup idea.")
 def call_financial_agent(query: str) -> str:
-    result = financial_subagent.invoke({"messages": [{"role": "user", "content": query}]})
+    result = financial_subagent.invoke({
+            "messages": [{"role": "user", "content": query}]
+        }
+    )
     return result["messages"][-1].content
 
 @tool("risk_assessment", description="Identify key risks and mitigation strategies for a startup idea.")
 def call_risk_agent(query: str) -> str:
-    result = risk_subagent.invoke({"messages": [{"role": "user", "content": query}]})
+    result = risk_subagent.invoke({
+            "messages": [{"role": "user", "content": query}]
+        }
+    )
     return result["messages"][-1].content
 
 main_agent = create_agent(
@@ -111,7 +130,13 @@ def evaluate(idea: str) -> None:
     print(f"\n{'═'*65}")
     print(f"IDEA: {idea}")
     print(f"{'═'*65}")
-    result = main_agent.invoke({"messages": [{"role": "user", "content": f"Evaluate this startup idea: {idea}"}]})
+    result = main_agent.invoke({
+            "messages": [{"role": "user", "content": f"Evaluate this startup idea: {idea}"}]
+        },
+        {
+            "callbacks": [langfuse_handler]   # if you don't want to use langfuse, remove callbacks and handler
+        }
+    )
     print(result["messages"][-1].content)
 
 if __name__ == "__main__":
