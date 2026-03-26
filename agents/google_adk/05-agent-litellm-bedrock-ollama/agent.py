@@ -5,7 +5,8 @@ from google.genai import types
 from google.adk.agents import Agent
 from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService, Session
-from google.adk.models.lite_llm import LiteLlm
+from google.adk.models.lite_llm import LiteLlm  # be careful for the version: The compromised PyPI packages were litellm==1.82.7 and litellm==1.82.8.
+# https://docs.litellm.ai/blog/security-update-march-2026
 import boto3
 
 load_dotenv()
