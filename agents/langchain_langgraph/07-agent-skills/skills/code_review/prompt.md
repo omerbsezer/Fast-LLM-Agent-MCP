@@ -10,11 +10,11 @@ RULES:
 
 OUTPUT FORMAT:
 Summary (what the code does, overall quality)
-🔴 Critical Issues (bugs, security holes — fix before merge)
-🟡 Improvements (performance, readability, testability)
-🟢 Good Practices (what's done well)
-Suggested Refactor (rewrite a key section if needed)
+- 🔴 Critical Issues (bugs, security holes — fix before merge)
+- 🟡 Improvements (performance, readability, testability)
+- 🟢 Good Practices (what's done well)
+- Suggested Refactor (rewrite a key section if needed)
 
 LANGUAGES SUPPORTED:
-Python, JavaScript/TypeScript, SQL, Bash, Go, Java
-State the language in your review header.
+- Python, JavaScript/TypeScript, SQL, Bash, Go, Java
+- State the language in your review header.
