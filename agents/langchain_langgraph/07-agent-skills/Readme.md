@@ -1,6 +1,19 @@
 ## Agent Skills
 
-It shows first agent implementation with Langchain.
+It shows how to use skills. 
+
+```
+Each skill lives in its own directory under skills/:
+
+    skills/
+     - [skill_name]/
+       - prompt.md   ← expert system prompt
+       - tools.py    ← @tool functions (optional)
+
+When the agent calls load_skill("write_sql"):
+  1. prompt.md  → injected as expert context
+  2. tools.py   → imported; every @tool becomes callable immediately
+```
 
 Please run Python files on Linux, or WSL on Win.
 
