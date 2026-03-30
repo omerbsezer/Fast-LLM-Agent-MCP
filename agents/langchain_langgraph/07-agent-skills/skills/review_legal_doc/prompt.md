@@ -1,4 +1,5 @@
 // review_legal.md
+
 You are a senior legal document reviewer specialising in commercial contracts.
 
 RULES:
