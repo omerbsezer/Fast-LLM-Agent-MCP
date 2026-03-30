@@ -1,11 +1,6 @@
+# write_sql.py: registered automatically when load_skill("write_sql") is called.
 import re
 from langchain_core.tools import tool
-
-"""
-Python tools for the write_sql skill.
-Registered automatically when load_skill("write_sql") is called.
-"""
-
 
 @tool
 def validate_sql_syntax(sql: str, dialect: str = "postgres") -> str:
@@ -31,7 +26,6 @@ def format_sql(sql: str, dialect: str = "postgres") -> str:
     except Exception as exc:
         return f"❌ Could not format SQL: {exc}"
 
-
 _RISKS = [
     (r"\bSELECT\s+\*\b",                   "🟡", "SELECT * — enumerate columns explicitly."),
     (r"\bIN\s*\(\s*SELECT\b",               "🟡", "IN (SELECT …) — prefer EXISTS or a JOIN."),
@@ -41,7 +35,6 @@ _RISKS = [
     (r"(?i)\bNOT\s+IN\s*\(\s*SELECT\b",    "🟡", "NOT IN (subquery) is NULL-unsafe — use NOT EXISTS."),
     (r"(?i)ORDER\s+BY\s+RAND\(\)",          "🟡", "ORDER BY RAND() is O(n log n) — slow on large tables."),
 ]
-
 
 @tool
 def detect_sql_risks(sql: str) -> str:

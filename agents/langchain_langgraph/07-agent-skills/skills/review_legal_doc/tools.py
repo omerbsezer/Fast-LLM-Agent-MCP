@@ -1,11 +1,6 @@
+# review_legal_doc.py: registered automatically when load_skill("review_legal_doc") is called.
 import re
 from langchain_core.tools import tool
-
-"""
-Python tools for the review_legal_doc skill.
-Registered automatically when load_skill("review_legal_doc") is called.
-"""
-
 
 _CLAUSES = {
     "Liability Cap":                 [r"(?i)total\s+liability\s+shall\s+not\s+exceed", r"(?i)aggregate\s+liability.{0,40}limited\s+to"],
@@ -28,7 +23,6 @@ _RISK_WEIGHTS = {"Consequential Damages Waiver": 25, "Liability Cap": 20, "IP As
 def _found_clauses(text: str) -> set[str]:
     return {ct for ct, patterns in _CLAUSES.items() if any(re.search(p, text) for p in patterns)}
 
-
 @tool
 def extract_legal_clauses(text: str) -> str:
     """Scan contract text and return all detected clause types with context snippets."""
@@ -44,7 +38,6 @@ def extract_legal_clauses(text: str) -> str:
                 break
     return "\n".join(results) if results else "No recognised clause types detected."
 
-
 @tool
 def score_legal_risk(text: str) -> str:
     """Return a heuristic risk score (0–100) with a LOW / MEDIUM / HIGH rating."""
@@ -56,7 +49,6 @@ def score_legal_risk(text: str) -> str:
         for c, w in _RISK_WEIGHTS.items() if c in found
     )
     return f"Risk Score: {score}/100 → {rating}\n\nBreakdown:\n{breakdown}"
-
 
 @tool
 def extract_dates_and_deadlines(text: str) -> str:

@@ -1,90 +1,107 @@
-python agent.py 
+ python3 agent.py
 
-═════════════════════════════════════════════════════════════════
-USER: Write a SQL query to find the top 5 customers by total revenue in the last 90 days, including their order count and average order value. Tables: orders(id, customer_id, total, created_at), customers(id, name, email).
-─────────────────────────────────────────────────────────────────
-<thinking> Based on the loaded skill, I will now write the SQL query to find the top 5 customers by total revenue in the last 90 days, including their order count and average order value. </thinking>
+════════════════════════════════════════════════════════════
+USER: Write a SQL query to find the top 5 customers by total revenue in the last 90 days, with order count and average order value. Tables: orders(id, customer_id, total, created_at), customers(id, name, email).
+────────────────────────────────────────────────────────────
+  🔧 load_skill(skill_name='write_sql')
+  🔧 load_skill(skill_name='write_sql')
 
-1. **Explanation of the Approach:**
-   - Use a Common Table Expression (CTE) to filter orders from the last 90 days.
-   - Aggregate the total revenue, order count, and average order value for each customer.
-   - Join the aggregated results with the customers table to get customer names and emails.
-   - Order the results by total revenue in descending order and limit to the top 5 customers.
+Here is the SQL query to find the top 5 customers by total revenue in the last 90 days, along with their order count and average order value:
 
-2. **SQL Query:**
-   ```sql
-   WITH recent_orders AS (
-       SELECT 
-           customer_id, 
-           SUM(total) AS total_revenue, 
-           COUNT(*) AS order_count, 
-           AVG(total) AS average_order_value
-       FROM 
-           orders
-       WHERE 
-           created_at >= NOW() - INTERVAL '90 days'
-       GROUP BY 
-           customer_id
-   )
-   SELECT 
-       c.name, 
-       c.email, 
-       ro.total_revenue, 
-       ro.order_count, 
-       ro.average_order_value
-   FROM 
-       recent_orders ro
-   JOIN 
-       customers c ON ro.customer_id = c.id
-   ORDER BY 
-       ro.total_revenue DESC
-   LIMIT 5;
-   ```
+```sql
+-- Brief explanation of the approach:
+-- This query uses a Common Table Expression (CTE) to filter orders from the last 90 days and calculate total revenue, order count, and average order value for each customer.
+-- It then selects the top 5 customers by total revenue and includes their order count and average order value.
 
-3. **Performance Notes:**
-   - Ensure there is an index on the `created_at` column in the `orders` table to improve the performance of the date filter.
-   - Consider adding an index on `customer_id` in the `orders` table to speed up the grouping and joining operations.
+WITH recent_orders AS (
+    SELECT 
+        o.customer_id,
+        SUM(o.total) AS total_revenue,
+        COUNT(o.id) AS order_count,
+        AVG(o.total) AS average_order_value
+    FROM 
+        orders o
+    WHERE 
+        o.created_at >= NOW() - INTERVAL '90 days'
+    GROUP BY 
+        o.customer_id
+),
+ranked_customers AS (
+    SELECT 
+        c.name,
+        c.email,
+        ro.total_revenue,
+        ro.order_count,
+        ro.average_order_value,
+        RANK() OVER (ORDER BY ro.total_revenue DESC) AS revenue_rank
+    FROM 
+        recent_orders ro
+    JOIN 
+        customers c ON ro.customer_id = c.id
+)
+SELECT 
+    name,
+    email,
+    total_revenue,
+    order_count,
+    average_order_value
+FROM 
+    ranked_customers
+WHERE 
+    revenue_rank <= 5
+ORDER BY 
+    total_revenue DESC;
 
-4. **Alternative Approaches:**
-   - If the dataset is small, a simpler query without CTEs could be used, but it may be less performant for larger datasets.
+-- Performance notes:
+-- This query uses window functions and CTEs for better performance and readability.
+-- Ensure indexes on orders.created_at and orders.customer_id for efficient filtering and joining.
 
-═════════════════════════════════════════════════════════════════
-USER: Review this contract clause: 'The Vendor shall not be liable for any indirect, incidental, or consequential damages arising from the use of the Service, even if advised of the possibility of such damages. Total liability shall not exceed the fees paid in the last 30 days. This agreement auto-renews annually unless cancelled with 90 days written notice.'
-─────────────────────────────────────────────────────────────────
-<thinking> Based on the loaded skill prompt, I will now review the provided contract clause according to the specified rules and output format. </thinking>
+-- Alternative approaches:
+-- A simpler approach without CTEs could be used, but it might be less readable and performant.
+```
+
+This query will provide the top 5 customers by total revenue in the last 90 days, along with their order count and average order value.
+
+
+════════════════════════════════════════════════════════════
+USER: Review this clause: 'The Vendor shall not be liable for any indirect, incidental, or consequential damages. Total liability shall not exceed fees paid in the last 30 days. Agreement auto-renews annually unless cancelled with 90 days written notice.'
+────────────────────────────────────────────────────────────
+  🔧 load_skill(skill_name='review_legal_doc')
+  🔧 load_skill(skill_name='review_legal_doc')
+
+<thinking> The clause has been reviewed, and the results have been compiled. I will now provide the final review to the user. </thinking>
+
+**Clause Review:**
 
 1. **Document Summary:**
-   - **Type:** Contract Clause
-   - **Parties:** Vendor and Customer (implied)
-   - **Purpose:** To define the Vendor's liability and the terms of the agreement's auto-renewal and cancellation.
+   - Type: Contract Clause
+   - Parties: Vendor and Customer
+   - Purpose: To define liability, auto-renewal, and cancellation terms
 
-2. **🔴 High Risk Clauses (must review with lawyer):**
-   - **Liability Limitation:** "The Vendor shall not be liable for any indirect, incidental, or consequential damages arising from the use of the Service, even if advised of the possibility of such damages. Total liability shall not exceed the fees paid in the last 30 days."
-     - This clause significantly limits the Vendor's liability, which may not be acceptable to the Customer.
-   - **Auto-renewal and Cancellation:** "This agreement auto-renews annually unless cancelled with 90 days written notice."
-     - The 90-day written notice requirement for cancellation may be onerous for the Customer.
+2. **🔴 High Risk Clauses:**
+   - Limitation of liability: "The Vendor shall not be liable for any indirect, incidental, or consequential damages. Total liability shall not exceed fees paid in the last 30 days."
+     - This clause significantly limits the Vendor's liability, which may be unfavorable to the Customer. It is recommended to review this clause with a lawyer to ensure it aligns with the Customer's risk tolerance and contractual expectations.
 
-3. **🟡 Medium Risk Clauses (worth negotiating):**
-   - **Liability Cap:** "Total liability shall not exceed the fees paid in the last 30 days."
-     - The cap on liability based on recent fees may be negotiable, especially if the fees are low relative to potential damages.
+3. **🟡 Medium Risk Clauses:**
+   - Auto-renewal and cancellation notice: "Agreement auto-renews annually unless cancelled with 90 days written notice."
+     - The 90-day written notice period for cancellation may be considered long. It is worth negotiating this term to reduce the notice period to a more reasonable timeframe, such as 30 or 60 days.
 
 4. **🟢 Standard / Acceptable Clauses:**
-   - The clause is standard in limiting liability for indirect damages, which is common in service agreements.
+   - No additional standard clauses were identified in the provided text.
 
-5. **Missing Clauses (protections not present):**
-   - **Intellectual Property:** There is no mention of IP ownership or licensing terms.
-   - **Termination Rights:** Specific termination rights beyond the cancellation notice are not detailed.
-   - **Jurisdiction and Governing Law:** These are not specified in the provided clause.
-   - **Data Privacy and Confidentiality:** Obligations regarding data privacy and confidentiality are not mentioned.
-   - **Force Majeure:** There is no clause addressing force majeure events.
-   - **Dispute Resolution:** No method for dispute resolution is provided.
+5. **Missing Clauses:**
+   - Intellectual property assignment and licensing
+   - Payment terms and late payment penalties
+   - Data privacy and confidentiality obligations
+   - Force majeure and dispute resolution
 
 6. **Overall Risk Rating: MEDIUM**
-   - The clause presents some risks, particularly around liability and cancellation terms, but it is not entirely one-sided. However, several standard protections are missing, which increases the overall risk.
 
-**Recommendation:** It is advisable for the Customer to consult with legal counsel to review and potentially negotiate the terms of this clause, especially the liability limitations and cancellation notice period.
+**Recommendation:**
+It is advisable for the Customer to consult with a lawyer to review the high-risk clauses and negotiate the medium-risk clauses. Additionally, the Customer should ensure that missing standard protections are included in the contract to safeguard their interests.
 
-═════════════════════════════════════════════════════════════════
+
+════════════════════════════════════════════════════════════
 USER: Review this Python function:
 
 def get_user(user_id):
@@ -92,49 +109,71 @@ def get_user(user_id):
     cur = conn.cursor()
     cur.execute(f"SELECT * FROM users WHERE id = {user_id}")
     return cur.fetchone()
-─────────────────────────────────────────────────────────────────
-<thinking> I will now conduct a code review of the provided Python function using the loaded code review skill. </thinking>
+────────────────────────────────────────────────────────────
+  🔧 load_skill(skill_name='code_review')
+  🔧 load_skill(skill_name='code_review')
 
-**Language: Python**
+<thinking> The tool result confirms the rules and output format for the code review. I will now proceed with the code review based on these guidelines. </thinking>
 
-1. **Summary**: 
-   The function `get_user` retrieves a user from a PostgreSQL database using a provided `user_id`. The function establishes a connection to the database, executes a SQL query to fetch the user, and returns the result. The overall quality is low due to critical security and performance issues.
+**Language:** Python
 
-2. **🔴 Critical Issues**:
-   - **SQL Injection**: The function uses string formatting to insert `user_id` into the SQL query, which is highly vulnerable to SQL injection attacks. This is a severe security flaw.
-   - **Hardcoded Secrets**: The database connection string contains hardcoded credentials (`admin:password123`). This is a significant security risk.
+**Summary:** The function `get_user` retrieves a user from a PostgreSQL database based on the provided `user_id`. The function establishes a connection to the database, executes a SQL query, and returns the result. 
 
-3. **🟡 Improvements**:
-   - **Parameterized Queries**: Use parameterized queries to prevent SQL injection.
-   - **Environment Variables**: Store database credentials in environment variables instead of hardcoding them.
-   - **Connection Management**: Use a context manager to ensure the database connection is properly closed.
+**🔴 Critical Issues:**
+1. **SQL Injection Vulnerability:** The function uses string formatting to construct the SQL query, which is vulnerable to SQL injection. This is a severe security risk.
+2. **Hardcoded Secrets:** The database connection string contains hardcoded credentials (`admin:password123`), which is insecure.
+3. **Lack of Error Handling:** The function does not handle potential errors that may occur during the database connection or query execution.
+4. **Resource Leak:** The function does not close the database connection or cursor, which can lead to resource leaks.
 
-4. **🟢 Good Practices**:
-   - The function is simple and does one thing, which is a good practice.
+**🟡 Improvements:**
+1. **Use Parameterized Queries:** To prevent SQL injection, use parameterized queries instead of string formatting.
+2. **Environment Variables for Secrets:** Store database credentials in environment variables or a secure secrets manager.
+3. **Error Handling:** Add try-except blocks to handle potential errors and ensure the connection is closed properly.
+4. **Context Manager:** Use a context manager to handle the database connection and ensure it is closed automatically.
 
-5. **Suggested Refactor**:
-   ```python
-   import psycopg2
-   import os
-   from contextlib import closing
+**🟢 Good Practices:**
+1. **Function Purpose:** The function clearly aims to retrieve a user based on their ID, which is a common and useful operation.
 
-   def get_user(user_id):
-       conn_string = os.getenv('DATABASE_URL')
-       with closing(psycopg2.connect(conn_string)) as conn:
-           with conn.cursor() as cur:
-               cur.execute("SELECT * FROM users WHERE id = %s", (user_id,))
-               return cur.fetchone()
-   ```
+**Suggested Refactor:**
 
-This refactor addresses the critical issues by using parameterized queries and environment variables for secrets, and improves connection management with context managers.
+```python
+import psycopg2
+from psycopg2 import sql
+import os
 
-═════════════════════════════════════════════════════════════════
+def get_user(user_id):
+    try:
+        # Use environment variables for secrets
+        conn = psycopg2.connect('postgresql://{}:{}@db:5432/prod'.format(
+            os.getenv('DB_USER'), os.getenv('DB_PASSWORD')
+        ))
+        with conn.cursor() as cur:
+            # Use parameterized query to prevent SQL injection
+            query = sql.SQL("SELECT * FROM users WHERE id = %s")
+            cur.execute(query, (user_id,))
+            return cur.fetchone()
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        return None
+    finally:
+        if conn:
+            conn.close()
+```
+
+This refactor addresses the critical issues by using parameterized queries, storing secrets securely, adding error handling, and ensuring the connection is closed properly.
+
+
+════════════════════════════════════════════════════════════
 USER: What can you help me with?
-─────────────────────────────────────────────────────────────────
-Here are the skills I can help you with:
+────────────────────────────────────────────────────────────
+  🔧 list_skills()
 
-1. **write_sql**: Expert PostgreSQL query writer with CTEs, window functions, and performance tips.
-2. **review_legal_doc**: Commercial contract reviewer that flags risk clauses and missing protections.
-3. **code_review**: Principal engineer reviewer for correctness, security, performance, and style.
+I can help you with the following tasks:
 
-How can I assist you today?
+1. **Code Review**: I can review source code in any programming language to identify issues, suggest improvements, and ensure best practices are followed.
+
+2. **Legal Document Review**: I can review contracts, clauses, or any legal text to identify potential issues, ensure compliance, and provide insights on legal risks.
+
+3. **SQL Query Writing**: I can write or generate SQL queries to help you retrieve, manipulate, and analyze data from databases.
+
+Feel free to ask for help with any of these tasks!

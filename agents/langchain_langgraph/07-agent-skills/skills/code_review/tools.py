@@ -1,13 +1,8 @@
-# code_review.md
+# code_review.md: registered automatically when load_skill("code_review") is called.
 import ast
 import re
 import textwrap
 from langchain_core.tools import tool
-
-"""
-Python tools for the code_review skill.
-Registered automatically when load_skill("code_review") is called.
-"""
 
 @tool
 def detect_secrets(code: str) -> str:
