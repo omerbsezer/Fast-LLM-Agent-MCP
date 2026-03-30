@@ -174,8 +174,11 @@ This refactor addresses the critical issues by using parameterized queries, stor
 
 
 ════════════════════════════════════════════════════════════
+
 USER: What can you help me with?
+
 ────────────────────────────────────────────────────────────
+  
   🔧 list_skills()
 
 I can help you with the following tasks:
