@@ -1,10 +1,14 @@
  python3 agent.py
 
 ════════════════════════════════════════════════════════════
+
 USER: Write a SQL query to find the top 5 customers by total revenue in the last 90 days, with order count and average order value. Tables: orders(id, customer_id, total, created_at), customers(id, name, email).
+
 ────────────────────────────────────────────────────────────
+  
+  
   🔧 load_skill(skill_name='write_sql')
-  🔧 load_skill(skill_name='write_sql')
+  
 
 Here is the SQL query to find the top 5 customers by total revenue in the last 90 days, along with their order count and average order value:
 
@@ -64,10 +68,13 @@ This query will provide the top 5 customers by total revenue in the last 90 days
 
 
 ════════════════════════════════════════════════════════════
+
 USER: Review this clause: 'The Vendor shall not be liable for any indirect, incidental, or consequential damages. Total liability shall not exceed fees paid in the last 30 days. Agreement auto-renews annually unless cancelled with 90 days written notice.'
+
 ────────────────────────────────────────────────────────────
+  
   🔧 load_skill(skill_name='review_legal_doc')
-  🔧 load_skill(skill_name='review_legal_doc')
+
 
 <thinking> The clause has been reviewed, and the results have been compiled. I will now provide the final review to the user. </thinking>
 
@@ -102,6 +109,7 @@ It is advisable for the Customer to consult with a lawyer to review the high-ris
 
 
 ════════════════════════════════════════════════════════════
+
 USER: Review this Python function:
 
 def get_user(user_id):
@@ -109,9 +117,11 @@ def get_user(user_id):
     cur = conn.cursor()
     cur.execute(f"SELECT * FROM users WHERE id = {user_id}")
     return cur.fetchone()
+
 ────────────────────────────────────────────────────────────
+  
   🔧 load_skill(skill_name='code_review')
-  🔧 load_skill(skill_name='code_review')
+
 
 <thinking> The tool result confirms the rules and output format for the code review. I will now proceed with the code review based on these guidelines. </thinking>
 
