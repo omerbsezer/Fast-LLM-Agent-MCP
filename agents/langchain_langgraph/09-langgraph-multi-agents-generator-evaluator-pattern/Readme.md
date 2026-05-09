@@ -93,7 +93,7 @@ List:
 Run:
 
 ``` 
-python agent.py
+python3 agent.py
 ``` 
 
 
