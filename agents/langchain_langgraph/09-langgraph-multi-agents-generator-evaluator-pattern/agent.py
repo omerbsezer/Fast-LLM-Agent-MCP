@@ -112,11 +112,16 @@ def generator(state: State) -> dict:
     rewrite = (f"\n\nPREVIOUS POST:\n{state['blog']}\nFEEDBACK:\n{state['feedback']}"
                if state.get("feedback") and n > 1 else "")
 
+    # Strip the Log section — critiques + research are useful, raw logs are noise
+    memory_context = mem_read().split("## Log")[0][:4000]
+
     blog = GEN.invoke(
-        f"Write a 1500-2000 word blog post about **{topic}** for senior AI/ML engineers.\n"
-        f"Cite ≥8 of the {len(urls)} sources below by title and URL.\n\n"
-        f"Research:\n{research[:8000]}{rewrite}\n\n"
-        "Format: # title, ## sections, code examples. End with ## References (real URLs only). Markdown only."
+        f"Write a 1500-2000 word technical blog post about **{topic}** for senior AI/ML engineers.\n\n"
+        f"MEMORY CONTEXT (previous research, sources, critiques):\n{memory_context}\n\n"
+        f"CURRENT RESEARCH:\n{research[:8000]}"
+        f"{rewrite}\n\n"
+        "Requirements: cite ≥8 sources by title + URL, # title, ## sections, code examples.\n"
+        "End with ## References (real URLs only). Markdown only."
     ).content
 
     BLOG.write_text(blog, encoding="utf-8")
