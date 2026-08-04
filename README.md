@@ -23,6 +23,9 @@ This repo covers LLM, Agents, MCP Tools, Skills concepts both theoretically and 
 - [Sample-01: Agent Strands with Streamlit UI](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/aws_strands/01-agent-strands-function-streamlit)
 - [Sample-02: Agent Strands Local MCP FileOps, Streamlit](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/aws_strands/02-agent-strands-local-mcp-fileOps-streamlit)
 - [Sample-03: Agent Strands, Remote MCP Serper Google Search Tool with Streamlit](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/aws_strands/03-agent-strands-remote-mcp-serper-streamlit)
+- [Sample-04: Agent Strands, Session Management on Sqlite.DB](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/aws_strands/04-agent-strands-session-store-sqlitedb-streamlit)
+- [Sample-05: Agent Strands, Multi-agents Workflow Sequential](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/aws_strands/05-agent-strands-multiagent-workflow-sequential)
+- [Sample-06: Agent Strands, Multi-agents Generator Evaluator Pattern](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/aws_strands/06-agent-strands-multi-agents-generator-evaluator-pattern)
 
 # Google ADK - Agent Sample Code & Projects
 - [Sample-00: Agent with Google ADK and ADK Web](https://github.com/omerbsezer/Fast-LLM-Agent-MCP/tree/main/agents/google_adk/00-first-agent-with-adk-web)
