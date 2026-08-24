@@ -1,0 +1,7 @@
+.venv
+.git
+output
+terraform
+__pycache__
+*.pyc
+.env

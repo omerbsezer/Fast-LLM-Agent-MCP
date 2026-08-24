@@ -1,0 +1,105 @@
+<!-- python3 invoke_client.py --read-memory <session-id> --> 
+
+<!-- python3 invoke_client.py --read-memory 7495615f-fb3d-4e89-9bf4-5abb161339fc --> 
+
+
+# Memory — 
+
+---
+
+
+## Research
+
+### Iter 1 — 14:46:59
+**KW:** AI Agents with Memory on AWS Bedrock AgentCore, Implementing persistent memory for AWS Bedrock AgentCore, Memory management techniques for AWS Bedrock AI Agents, AWS Bedrock AgentCore memory integration best practices, Enhancing AWS Bedrock AgentCore with stateful memory, AWS Bedrock AgentCore memory storage solutions, Developing state-aware AI Agents on AWS Bedrock, AWS Bedrock AgentCore memory architecture overview
+
+### [Bring AI agents with Long-Term memory into production in minutes - DEV Community](https://dev.to/aws/bring-ai-agents-with-long-term-memory-into-production-in-minutes-338l)
+**Snippet:** April 15, 2026 - """ Production-Ready AI Agent with Memory Remembers conversations and user preferences across sessions """ import os from strands import Agent from strands_tools import calculator from bedrock_agentcore.runtime import BedrockAgentCoreApp from ...
+
+**Key Points:**
+- **Cross-Session Memory**: AgentCore Memory enables AI agents to remember users across different sessions, providing personalized experiences that persist beyond session boundaries.
+- **Memory Architecture**: Combines AgentCore Runtime's built-in session memory with AgentCore Memory's cross-session persistence for long-term extraction of key insights and user preferences.
+- **Prerequisites**: Requires an AWS account with appropriate permissions, Python 3.10+ environment, and AWS CLI configured.
+- **Memory Configuration**: Involves setting up AgentCoreMemoryConfig with retrieval strategies for user facts and preferences.
+- **Memory Strategies**: Offers built-in strategies like User Preferences, Semantic, and Session Summaries, with options for custom strategies.
+- **Deployment**: Uses `agentcore configure` and `agentcore launch` commands to deploy memory-enabled agents, with custom headers for user identification.
+- **Testing**: Includes short-term memory tests within the same session and long-term memory tests across different sessions, noting asynchronous extraction for long-term memory.
+
+---
+### [Building AI Agents on AWS in 2025: A Practitioner's Guide to Bedrock, AgentCore, and Beyond - DEV Community](https://dev.to/aws-builders/building-ai-agents-on-aws-in-2025-a-practitioners-guide-to-bedrock-agentcore-and-beyond-4efn)
+**Snippet:** January 3, 2026 - The December update added episodic memory - agents that learn from experiences and build knowledge over time. Instead of treating each session as independent, the agent develops understanding of patterns and preferences. from bedrock_agentcore ...
+
+**Key Points:**
+- AWS is shifting from simple LLM invocations to orchestrating autonomous AI agents that plan, execute, learn, and operate independently.
+- Amazon Bedrock serves as the multi-model foundation, offering nearly 100 serverless foundation models and supporting reinforcement fine-tuning and cross-region inference.
+- Amazon Bedrock AgentCore provides a full stack for building, deploying, and operating agents, featuring session isolation, long-running workloads, and bidirectional streaming.
+- AgentCore Memory enables agents to remember context across interactions through episodic memory, allowing them to learn from experiences and build knowledge over time.
+- AgentCore Gateway converts existing APIs into Model Context Protocol (MCP) compatible tools, enabling dynamic tool discovery for multi-agent systems.
+- AgentCore Identity handles authentication and authorization for agent actions, supporting OAuth integration and secure vault storage for credentials.
+- AgentCore Observability integrates with CloudWatch for end-to-end monitoring, including execution traces, latency metrics, and custom dashboards.
+- Policy and Evaluations in AgentCore provide guardrails for production deployment, enabling real-time interception of tool calls and built-in evaluators for quality dimensions.
+
+---
+### [AI Agent Memory Made Easy - Amazon Bedrock AgentCore Memory with Spring AI - DEV Community](https://dev.to/yuriybezsonov/ai-agent-memory-made-easy-amazon-bedrock-agentcore-memory-with-spring-ai-3bng)
+**Snippet:** February 3, 2026 - But if you're already on AWS and want to move fast, Amazon Bedrock AgentCore Memory handles the infrastructure so you can focus on what your agent actually does. ... Let's create an Amazon Bedrock AgentCore Memory resource with LTM strategies. Copy and run in terminal: # Create memory resource MEMORY_ID=$(aws bedrock-agentcore-control create-memory \ --name "memory_demo" --description "Memory for AI Agent demo" \ --event-expiry-duration 90 --no-cli-pager \ --query "memory.id" --output text) && echo "Memory ID: ${MEMORY_ID}" # Wait for memory to become active echo -n "Waiting for memory to beco
+
+**Key Points:**
+- Amazon Bedrock AgentCore Memory provides fully managed, persistent memory for AI agents with both short-term and long-term memory capabilities.
+- Short-term memory (STM) stores raw conversation events within sessions, maintaining context for multi-turn conversations.
+- Long-term memory (LTM) strategies include semantic extraction, user preferences, summaries, and episodic memory, automatically extracting facts and preferences asynchronously.
+- AgentCore Memory eliminates the need for custom infrastructure like PostgreSQL, offering built-in strategies and automatic extraction.
+- The Spring AI Amazon Bedrock AgentCore starter simplifies integration, requiring minimal code (under 50 lines of Java) and no manual database management.
+- Prerequisites include Java 21+, AWS CLI with Bedrock AgentCore access, and JBang.
+- The memory resource creation involves AWS CLI commands to set up and activate memory with specified strategies.
+- The AI agent application uses Spring Boot and Spring AI dependencies, with environment variables configuring memory IDs and strategy IDs.
+- Testing the application demonstrates the agent’s ability to remember user information across sessions using both STM and LTM.
+
+---
+### [Build Production-ready AI Agents with AWS Bedrock & Agentcore - DEV Community](https://dev.to/aws-builders/build-production-ready-ai-agents-with-aws-bedrock-agentcore-13kk)
+**Snippet:** January 26, 2026 - Most AI chatbots are stateless. They forget everything after each conversation. But for a SaaS product, we need persistence. We need the agent to remember: ... from bedrock_agentcore.memory import MemoryClient from strands.hooks import HookProvider, HookRegistry, MessageAddedEvent, AfterInvocationEvent class ProductHuntMemoryHooks(HookProvider): def __init__(self, memory_id: str, client: MemoryClient, actor_id: str, session_id: str): self.memory_id = memory_id self.client = client self.actor_id = actor_id self.session_id = session_id def retrieve_product_context(self, event: MessageAddedEvent)
+
+**Key Points:**
+- Utilizes AWS Bedrock for accessing foundation models like Claude.
+- Employs Strands Agents SDK for building AI agents with minimal code.
+- Uses AgentCore Runtime for session isolation and security in production.
+- Implements AgentCore Memory for persistent context across sessions with short-term and long-term memory.
+- Builds custom tools using the @tool decorator in Strands for agent capabilities.
+- Integrates FastAPI with Server-Sent Events (SSE) for streaming responses in the web interface.
+- Recommends Infrastructure as Code (IaC) for consistent and manageable deployment.
+- Suggests breaking monolithic tools into smaller, composable pieces for flexibility and testability.
+- Plans for multi-agent systems to scale SaaS applications.
+- Emphasizes best practices like collecting ground truth data, using Bedrock Guardrails, and monitoring with AgentCore Observability.
+
+---
+### [Cracking the Bedrock, Reaching the Core: Building Agents with AWS AgentCore Runtime and Memory - DEV Community](https://dev.to/aws-builders/cracking-the-bedrock-reaching-the-core-building-agents-with-aws-agentcore-runtime-and-memory-32kg)
+**Snippet:** May 8, 2026 - Bedrock serves every LLM call via Strands' BedrockModel. AgentCore Memory receives session events automatically from the Strands session manager, and returns extracted patterns when the loop asks for them at the start of each run.
+
+**Key Points:**
+- AWS AgentCore Runtime handles HTTP transport, session lifecycle, and streaming framing.
+- AgentCore allows integration with various frameworks like Strands, LangGraph, and CrewAI.
+- The solution consists of an imperative shell (agent/builder.py) and a functional core (agent/iteration.py).
+- AgentCore Memory automatically stores and retrieves session events for cross-session learning.
+- The generate/score/critique/regenerate loop runs in the functional core, independent of the framework.
+- AWS Bedrock serves LLM calls, while AgentCore Memory manages session-based learning and pattern extraction.
+- Observability is achieved through OpenTelemetry spans and structured logging in the imperative shell.
+
+## Sources
+
+### Iter 1
+- https://dev.to/aws/bring-ai-agents-with-long-term-memory-into-production-in-minutes-338l
+- https://dev.to/aws-builders/building-ai-agents-on-aws-in-2025-a-practitioners-guide-to-bedrock-agentcore-and-beyond-4efn
+- https://dev.to/yuriybezsonov/ai-agent-memory-made-easy-amazon-bedrock-agentcore-memory-with-spring-ai-3bng
+- https://dev.to/aws-builders/build-production-ready-ai-agents-with-aws-bedrock-agentcore-13kk
+- https://dev.to/aws-builders/cracking-the-bedrock-reaching-the-core-building-agents-with-aws-agentcore-runtime-and-memory-32kg
+
+## Critiques
+
+### Iter 1 — 14:47:14 — **ACCEPTED**
+| Depth | Recency | Structure | Writing |
+|---|---|---|---|
+| 5/5 | 5/5 | 5/5 | 5/5 |
+
+## Log
+
+- **Eval iter 1** `14:47:14` — ACCEPTED (D:5 R:5 S:5 W:5)
+- **Iter 1** `14:46:59` — 5 articles
