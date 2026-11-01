@@ -3,7 +3,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.0"
+      version = ">= 6.18.0" # first version with aws_bedrockagentcore_* resources
     }
     opensearch = {
       source  = "opensearch-project/opensearch"
@@ -12,6 +12,10 @@ terraform {
     time = {
       source  = "hashicorp/time"
       version = "~> 0.11"
+    }
+    local = {
+      source  = "hashicorp/local"
+      version = "~> 2.5"
     }
   }
 }

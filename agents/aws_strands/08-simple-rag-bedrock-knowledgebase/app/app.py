@@ -1,5 +1,17 @@
-import streamlit as st
+import sys
+import uuid
 
+import streamlit as st
+from streamlit import runtime
+
+# `python app.py` re-launches itself under Streamlit, so `streamlit run` isn't needed.
+if __name__ == "__main__" and not runtime.exists():
+    from streamlit.web import cli as stcli
+
+    sys.argv = ["streamlit", "run", __file__, *sys.argv[1:]]
+    sys.exit(stcli.main())
+
+from utils.agentcore_ops import is_agentic_configured, query_agentic
 from utils.bedrock_ops import get_ingestion_job_status, query, start_ingestion_job
 from utils.s3_ops import upload_file
 
@@ -9,11 +21,17 @@ if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 if "ingestion_job_id" not in st.session_state:
     st.session_state.ingestion_job_id = None
+if "agent_session_id" not in st.session_state:
+    # AgentCore requires runtimeSessionId of at least 33 characters (a UUID is 36).
+    st.session_state.agent_session_id = str(uuid.uuid4())
 
 with st.sidebar:
     st.header("Chat History")
     for turn in st.session_state.chat_history:
-        st.markdown(f"**{turn['role'].capitalize()}:** {turn['content']}")
+        if turn["role"] == "user":
+            st.markdown(f"**User:** {turn['content']}")
+        else:
+            st.markdown(f"**Assistant:** {turn['simple']['answer']}")
 
 st.title("Simple RAG")
 
@@ -45,20 +63,94 @@ if st.session_state.ingestion_job_id:
         st.error(f"Could not fetch job status: {e}")
 
 st.subheader("Ask a question")
+agentic_available = is_agentic_configured()
+compare = st.checkbox(
+    "Also run Agentic RAG (compare)",
+    disabled=not agentic_available,
+    help=None
+    if agentic_available
+    else "Run ./deploy.sh to deploy the agent on AgentCore; it writes AGENT_RUNTIME_ARN into app/.env.",
+)
+
 question = st.chat_input("Ask a question about your documents")
 if question:
     st.session_state.chat_history.append({"role": "user", "content": question})
+
     try:
-        result = query(question)
-        answer = result["answer"]
-        if result["citations"]:
-            answer += "\n\nSources:\n" + "\n".join(f"- {c}" for c in result["citations"])
-        else:
-            answer += "\n\n_No source documents were found for this question — make sure you've uploaded and synced documents._"
+        simple_result = query(question)
     except Exception as e:
-        answer = f"Error: {e}"
-    st.session_state.chat_history.append({"role": "assistant", "content": answer})
+        simple_result = {"answer": f"Error: {e}", "citations": []}
+
+    agentic_result = None
+    if compare:
+        try:
+            agentic_result = query_agentic(question, st.session_state.agent_session_id)
+        except Exception as e:
+            agentic_result = {"answer": f"Error: {e}", "citations": [], "trace": []}
+
+    st.session_state.chat_history.append(
+        {"role": "assistant", "simple": simple_result, "agentic": agentic_result}
+    )
+
+
+def render_answer(result: dict) -> None:
+    st.markdown(result["answer"])
+    if result.get("citations"):
+        st.markdown("**Sources:**\n" + "\n".join(f"- {c}" for c in result["citations"]))
+    else:
+        st.caption("No source documents were found for this question.")
+
+
+def render_trace(trace: list) -> None:
+    if not trace:
+        return
+    with st.expander(f"Retrieval trace ({sum(1 for t in trace if t['type'] == 'retrieve')} retrieval calls)"):
+        for step in trace:
+            if step["type"] == "retrieve":
+                reranked = " (reranked)" if step.get("reranked") else ""
+                st.markdown(f"- **Retrieve** `{step['query']}` → {step['num_chunks']} chunks{reranked}")
+            else:
+                verdict = "sufficient" if step.get("sufficient") else "insufficient"
+                st.markdown(f"- **Critique** → {verdict}, missing: {step.get('missing_aspects') or 'none'}")
+
+
+def render_agentcore_proof(info: dict | None) -> None:
+    if not info:
+        return
+    container = info.get("container") or {}
+    echoed = container.get("session_id") == info["session_id"]
+    with st.expander(f"Ran on Bedrock AgentCore {'✅' if echoed else '⚠️'}"):
+        st.markdown(
+            f"- **Runtime:** `{info['runtime_arn'].rsplit('/', 1)[-1]}`\n"
+            f"- **Session ID:** `{info['session_id']}`\n"
+            f"- **Trace ID:** `{info.get('trace_id') or 'n/a'}`\n"
+            f"- **AWS request ID:** `{info['request_id']}` (HTTP {info.get('status_code')}, {info['latency_s']} s)\n"
+            f"- **Container host:** `{container.get('host', 'n/a')}`, session seen inside the container: "
+            f"`{container.get('session_id', 'n/a')}` {'(matches)' if echoed else '(does not match)'}"
+        )
+        st.markdown(
+            f"Find this session under **Sessions** in "
+            f"[AgentCore Observability]({info['console_url']}) to see each prompt, tool call "
+            "and model call. Traces can take a few minutes to appear."
+        )
+
 
 for turn in st.session_state.chat_history:
-    with st.chat_message(turn["role"]):
-        st.markdown(turn["content"])
+    if turn["role"] == "user":
+        with st.chat_message("user"):
+            st.markdown(turn["content"])
+        continue
+
+    with st.chat_message("assistant"):
+        if turn["agentic"] is not None:
+            col1, col2 = st.columns(2)
+            with col1:
+                st.markdown("#### Simple RAG")
+                render_answer(turn["simple"])
+            with col2:
+                st.markdown("#### Agentic RAG")
+                render_answer(turn["agentic"])
+                render_trace(turn["agentic"].get("trace", []))
+                render_agentcore_proof(turn["agentic"].get("agentcore"))
+        else:
+            render_answer(turn["simple"])
