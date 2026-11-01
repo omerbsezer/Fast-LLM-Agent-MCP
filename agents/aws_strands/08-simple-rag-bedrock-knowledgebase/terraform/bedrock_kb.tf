@@ -1,7 +1,6 @@
 locals {
   generation_model_arn = "arn:aws:bedrock:${var.aws_region}:${data.aws_caller_identity.current.account_id}:inference-profile/${var.generation_model_id}"
   embedding_model_arn  = "arn:aws:bedrock:${var.aws_region}::foundation-model/${var.embedding_model_id}"
-  rerank_model_arn     = "arn:aws:bedrock:${var.aws_region}::foundation-model/${var.rerank_model_id}"
 }
 
 resource "aws_bedrockagent_knowledge_base" "this" {

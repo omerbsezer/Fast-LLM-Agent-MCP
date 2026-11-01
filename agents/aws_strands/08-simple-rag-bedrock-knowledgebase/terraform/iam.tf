@@ -31,19 +31,6 @@ data "aws_iam_policy_document" "bedrock_kb_permissions" {
     resources = ["arn:aws:bedrock:${var.aws_region}::foundation-model/${var.embedding_model_id}"]
   }
 
-  # Reranking inside a Retrieve call runs as this service role (not the caller).
-  statement {
-    sid       = "Rerank"
-    actions   = ["bedrock:Rerank"]
-    resources = ["*"]
-  }
-
-  statement {
-    sid       = "InvokeRerankModel"
-    actions   = ["bedrock:InvokeModel"]
-    resources = [local.rerank_model_arn]
-  }
-
   statement {
     sid       = "OpenSearchServerlessAccess"
     actions   = ["aoss:APIAccessAll"]

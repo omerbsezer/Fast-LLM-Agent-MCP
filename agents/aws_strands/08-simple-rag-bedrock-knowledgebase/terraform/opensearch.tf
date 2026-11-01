@@ -87,13 +87,6 @@ resource "opensearch_index" "kb_vector_index" {
     }
   })
 
-  # Bedrock adds its own metadata fields to the mapping during ingestion
-  # (x-amz-bedrock-kb-*). Without this, every later apply would see drift and
-  # replace the index, wiping all embeddings.
-  lifecycle {
-    ignore_changes = [mappings]
-  }
-
   depends_on = [time_sleep.wait_for_access_policy]
 }
 
