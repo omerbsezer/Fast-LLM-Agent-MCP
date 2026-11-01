@@ -1,0 +1,382 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Simple vs Agentic RAG on Bedrock Knowledge Bases",
+    "output": "diagram/rag-architecture.html",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://local.invalid/agentic-rag-bedrock-knowledgebase.git",
+      "link_mode": "local-only",
+      "revision": "aa3b2fc0ea04464d80914e7797481d28b417b3da"
+    }
+  },
+  "components": [
+    {
+      "id": "user",
+      "type": "external",
+      "label": "User",
+      "sublabel": "browser",
+      "pos": [
+        40,
+        250
+      ],
+      "size": [
+        120,
+        60
+      ]
+    },
+    {
+      "id": "streamlit",
+      "type": "frontend",
+      "label": "Streamlit App",
+      "sublabel": "app.py (runs locally)",
+      "pos": [
+        220,
+        240
+      ],
+      "size": [
+        160,
+        80
+      ],
+      "sources": [
+        {
+          "path": "app/app.py",
+          "line": 25,
+          "end_line": 40
+        },
+        {
+          "path": "app/utils/bedrock_ops.py",
+          "line": 45,
+          "end_line": 59
+        },
+        {
+          "path": "app/utils/agentcore_ops.py",
+          "line": 10,
+          "end_line": 20
+        }
+      ]
+    },
+    {
+      "id": "agentcore",
+      "type": "backend",
+      "label": "AgentCore Runtime",
+      "sublabel": "Strands agent: retrieve + critique",
+      "tag": "IAM: agent execution role",
+      "pos": [
+        790,
+        60
+      ],
+      "size": [
+        200,
+        70
+      ],
+      "sources": [
+        {
+          "path": "agent/agent.py",
+          "line": 52,
+          "end_line": 63
+        },
+        {
+          "path": "agent/agent.py",
+          "line": 102,
+          "end_line": 133
+        },
+        {
+          "path": "agent/agent.py",
+          "line": 137,
+          "end_line": 166
+        }
+      ]
+    },
+    {
+      "id": "claude",
+      "type": "cloud",
+      "label": "Generation LLM",
+      "sublabel": "inference profile",
+      "pos": [
+        1100,
+        60
+      ],
+      "size": [
+        160,
+        70
+      ],
+      "sources": [
+        {
+          "path": "terraform/bedrock_kb.tf",
+          "line": 2
+        },
+        {
+          "path": "agent/agent.py",
+          "line": 140,
+          "end_line": 144
+        },
+        {
+          "path": "app/utils/bedrock_ops.py",
+          "line": 47,
+          "end_line": 58
+        }
+      ]
+    },
+    {
+      "id": "kb",
+      "type": "cloud",
+      "label": "Bedrock Knowledge Base",
+      "sublabel": "orchestrates ingest + query",
+      "tag": "IAM: KB service role",
+      "pos": [
+        790,
+        225
+      ],
+      "size": [
+        200,
+        110
+      ],
+      "sources": [
+        {
+          "path": "terraform/bedrock_kb.tf",
+          "line": 7,
+          "end_line": 37
+        },
+        {
+          "path": "terraform/bedrock_kb.tf",
+          "line": 39,
+          "end_line": 59
+        },
+        {
+          "path": "app/utils/bedrock_ops.py",
+          "line": 9,
+          "end_line": 15
+        }
+      ]
+    },
+    {
+      "id": "reranker",
+      "type": "cloud",
+      "label": "Reranker Model",
+      "sublabel": "amazon.rerank-v1:0",
+      "pos": [
+        1100,
+        250
+      ],
+      "size": [
+        160,
+        60
+      ],
+      "sources": [
+        {
+          "path": "terraform/bedrock_kb.tf",
+          "line": 4
+        },
+        {
+          "path": "agent/agent.py",
+          "line": 36,
+          "end_line": 49
+        },
+        {
+          "path": "app/utils/bedrock_ops.py",
+          "line": 29,
+          "end_line": 42
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "type": "database",
+      "label": "S3 Docs Bucket",
+      "sublabel": "versioned, no public",
+      "pos": [
+        450,
+        430
+      ],
+      "size": [
+        170,
+        64
+      ],
+      "sources": [
+        {
+          "path": "terraform/s3.tf",
+          "line": 1,
+          "end_line": 3
+        },
+        {
+          "path": "app/utils/s3_ops.py",
+          "line": 4,
+          "end_line": 8
+        }
+      ]
+    },
+    {
+      "id": "opensearch",
+      "type": "database",
+      "label": "OpenSearch Serverless",
+      "sublabel": "HNSW vector index",
+      "pos": [
+        790,
+        440
+      ],
+      "size": [
+        200,
+        64
+      ],
+      "sources": [
+        {
+          "path": "terraform/opensearch.tf",
+          "line": 25,
+          "end_line": 33
+        },
+        {
+          "path": "terraform/opensearch.tf",
+          "line": 70,
+          "end_line": 91
+        }
+      ]
+    },
+    {
+      "id": "embed",
+      "type": "cloud",
+      "label": "Embedding Model",
+      "sublabel": "titan-embed-text-v2",
+      "pos": [
+        1100,
+        430
+      ],
+      "size": [
+        160,
+        64
+      ],
+      "sources": [
+        {
+          "path": "terraform/variables.tf",
+          "line": 19,
+          "end_line": 29
+        },
+        {
+          "path": "terraform/bedrock_kb.tf",
+          "line": 14,
+          "end_line": 19
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "AWS (provisioned by Terraform)",
+      "wraps": [
+        "agentcore",
+        "claude",
+        "kb",
+        "reranker",
+        "s3",
+        "opensearch",
+        "embed"
+      ],
+      "pad": 20
+    }
+  ],
+  "connections": [
+    {
+      "from": "user",
+      "to": "streamlit",
+      "label": "question",
+      "variant": "emphasis"
+    },
+    {
+      "from": "streamlit",
+      "to": "s3",
+      "label": "I1 upload",
+      "fromSide": "bottom",
+      "toSide": "left",
+      "variant": "dashed"
+    },
+    {
+      "from": "s3",
+      "to": "kb",
+      "label": "I2 sync: read + chunk",
+      "variant": "dashed",
+      "fromSide": "top",
+      "toSide": "left"
+    },
+    {
+      "from": "kb",
+      "to": "embed",
+      "label": "I3 / Q2 embed",
+      "fromSide": "right",
+      "toSide": "top"
+    },
+    {
+      "from": "kb",
+      "to": "opensearch",
+      "label": "I4 index · Q3 top 20"
+    },
+    {
+      "from": "streamlit",
+      "to": "kb",
+      "label": "Q1 retrieve_and_generate",
+      "variant": "emphasis"
+    },
+    {
+      "from": "streamlit",
+      "to": "agentcore",
+      "label": "Q1 invoke_agent_runtime",
+      "fromSide": "top",
+      "toSide": "left"
+    },
+    {
+      "from": "agentcore",
+      "to": "kb",
+      "label": "Q1 retrieve (≤3×)"
+    },
+    {
+      "from": "kb",
+      "to": "reranker",
+      "label": "Q4 rerank → 5"
+    },
+    {
+      "from": "kb",
+      "to": "claude",
+      "label": "Q5 generate (simple)",
+      "fromSide": "top",
+      "toSide": "bottom"
+    },
+    {
+      "from": "agentcore",
+      "to": "claude",
+      "label": "Q5 critique + answer"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "violet",
+      "title": "Ingestion order (I)",
+      "items": [
+        "I1 Streamlit uploads files to S3",
+        "I2 Sync button calls start_ingestion_job; KB reads S3 and splits fixed-size chunks",
+        "I3 each chunk embedded by Titan v2 (1024-d)",
+        "I4 vector + text written to the OpenSearch index"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "Query order (Q)",
+      "items": [
+        "Q1 question enters the KB (simple) or the agent's retrieve tool (agentic)",
+        "Q2 question embedded with the same model",
+        "Q3 k-NN search returns 20 candidates",
+        "Q4 reranker keeps the best 5",
+        "Q5 LLM answers from those 5 chunks"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "IAM roles",
+      "items": [
+        "KB service role: S3 read, embed + rerank invoke, aoss:APIAccessAll",
+        "Agent execution role: InvokeModel, bedrock:Retrieve, ECR pull, logs, X-Ray"
+      ]
+    }
+  ]
+}

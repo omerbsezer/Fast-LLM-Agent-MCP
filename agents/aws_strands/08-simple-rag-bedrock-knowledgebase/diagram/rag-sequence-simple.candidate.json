@@ -1,0 +1,364 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Simple RAG: Ingestion then Query",
+    "output": "diagram/rag-sequence-simple.html",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://local.invalid/agentic-rag-bedrock-knowledgebase.git",
+      "link_mode": "local-only",
+      "revision": "aa3b2fc0ea04464d80914e7797481d28b417b3da"
+    }
+  },
+  "participants": [
+    {
+      "id": "user",
+      "type": "external",
+      "label": "User",
+      "sublabel": "browser"
+    },
+    {
+      "id": "app",
+      "type": "frontend",
+      "label": "Streamlit",
+      "sublabel": "app.py",
+      "sources": [
+        {
+          "path": "app/app.py",
+          "line": 25,
+          "end_line": 40
+        },
+        {
+          "path": "app/utils/bedrock_ops.py",
+          "line": 45,
+          "end_line": 59
+        },
+        {
+          "path": "app/utils/agentcore_ops.py",
+          "line": 10,
+          "end_line": 20
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "type": "database",
+      "label": "S3",
+      "sublabel": "docs bucket",
+      "sources": [
+        {
+          "path": "terraform/s3.tf",
+          "line": 1,
+          "end_line": 3
+        },
+        {
+          "path": "app/utils/s3_ops.py",
+          "line": 4,
+          "end_line": 8
+        }
+      ]
+    },
+    {
+      "id": "kb",
+      "type": "cloud",
+      "label": "Knowledge Base",
+      "sublabel": "Bedrock",
+      "sources": [
+        {
+          "path": "terraform/bedrock_kb.tf",
+          "line": 7,
+          "end_line": 37
+        },
+        {
+          "path": "terraform/bedrock_kb.tf",
+          "line": 39,
+          "end_line": 59
+        },
+        {
+          "path": "app/utils/bedrock_ops.py",
+          "line": 9,
+          "end_line": 15
+        }
+      ]
+    },
+    {
+      "id": "embed",
+      "type": "cloud",
+      "label": "Embedding",
+      "sublabel": "Titan v2",
+      "sources": [
+        {
+          "path": "terraform/variables.tf",
+          "line": 19,
+          "end_line": 29
+        },
+        {
+          "path": "terraform/bedrock_kb.tf",
+          "line": 14,
+          "end_line": 19
+        }
+      ]
+    },
+    {
+      "id": "os",
+      "type": "database",
+      "label": "OpenSearch",
+      "sublabel": "vector index",
+      "sources": [
+        {
+          "path": "terraform/opensearch.tf",
+          "line": 25,
+          "end_line": 33
+        },
+        {
+          "path": "terraform/opensearch.tf",
+          "line": 70,
+          "end_line": 91
+        }
+      ]
+    },
+    {
+      "id": "rr",
+      "type": "cloud",
+      "label": "Reranker",
+      "sublabel": "rerank-v1",
+      "sources": [
+        {
+          "path": "terraform/bedrock_kb.tf",
+          "line": 4
+        },
+        {
+          "path": "agent/agent.py",
+          "line": 36,
+          "end_line": 49
+        },
+        {
+          "path": "app/utils/bedrock_ops.py",
+          "line": 29,
+          "end_line": 42
+        }
+      ]
+    },
+    {
+      "id": "llm",
+      "type": "cloud",
+      "label": "LLM",
+      "sublabel": "generation",
+      "sources": [
+        {
+          "path": "terraform/bedrock_kb.tf",
+          "line": 2
+        },
+        {
+          "path": "agent/agent.py",
+          "line": 140,
+          "end_line": 144
+        },
+        {
+          "path": "app/utils/bedrock_ops.py",
+          "line": 47,
+          "end_line": 58
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 158,
+      "to": 476,
+      "label": "1 · Ingestion"
+    },
+    {
+      "from": 506,
+      "to": 862,
+      "label": "2 · Simple RAG query"
+    }
+  ],
+  "messages": [
+    {
+      "from": "user",
+      "to": "app",
+      "y": 170,
+      "label": "upload PDFs",
+      "variant": "default"
+    },
+    {
+      "from": "app",
+      "to": "s3",
+      "y": 198,
+      "label": "upload_fileobj",
+      "variant": "emphasis"
+    },
+    {
+      "from": "user",
+      "to": "app",
+      "y": 226,
+      "label": "click Sync KB",
+      "variant": "default"
+    },
+    {
+      "from": "app",
+      "to": "kb",
+      "y": 254,
+      "label": "start_ingestion_job",
+      "variant": "emphasis",
+      "note": "async job; the app polls its status"
+    },
+    {
+      "from": "kb",
+      "to": "s3",
+      "y": 302,
+      "label": "read documents",
+      "variant": "default"
+    },
+    {
+      "from": "s3",
+      "to": "kb",
+      "y": 330,
+      "label": "objects",
+      "variant": "return",
+      "note": "KB splits text into fixed-size chunks"
+    },
+    {
+      "from": "kb",
+      "to": "embed",
+      "y": 378,
+      "label": "embed each chunk",
+      "variant": "default"
+    },
+    {
+      "from": "embed",
+      "to": "kb",
+      "y": 406,
+      "label": "1024-d vectors",
+      "variant": "return"
+    },
+    {
+      "from": "kb",
+      "to": "os",
+      "y": 434,
+      "label": "store vector + text",
+      "variant": "emphasis"
+    },
+    {
+      "from": "kb",
+      "to": "app",
+      "y": 462,
+      "label": "job COMPLETE",
+      "variant": "return"
+    },
+    {
+      "from": "user",
+      "to": "app",
+      "y": 520,
+      "label": "ask question",
+      "variant": "default"
+    },
+    {
+      "from": "app",
+      "to": "kb",
+      "y": 548,
+      "label": "retrieve_and_generate",
+      "variant": "emphasis",
+      "note": "numberOfResults 20, rerank to 5"
+    },
+    {
+      "from": "kb",
+      "to": "embed",
+      "y": 596,
+      "label": "embed question",
+      "variant": "default"
+    },
+    {
+      "from": "embed",
+      "to": "kb",
+      "y": 624,
+      "label": "query vector",
+      "variant": "return"
+    },
+    {
+      "from": "kb",
+      "to": "os",
+      "y": 652,
+      "label": "k-NN search",
+      "variant": "default"
+    },
+    {
+      "from": "os",
+      "to": "kb",
+      "y": 680,
+      "label": "top 20 chunks",
+      "variant": "return"
+    },
+    {
+      "from": "kb",
+      "to": "rr",
+      "y": 708,
+      "label": "rerank 20 chunks",
+      "variant": "default"
+    },
+    {
+      "from": "rr",
+      "to": "kb",
+      "y": 736,
+      "label": "best 5",
+      "variant": "return"
+    },
+    {
+      "from": "kb",
+      "to": "llm",
+      "y": 764,
+      "label": "prompt + 5 chunks",
+      "variant": "emphasis"
+    },
+    {
+      "from": "llm",
+      "to": "kb",
+      "y": 792,
+      "label": "answer",
+      "variant": "return"
+    },
+    {
+      "from": "kb",
+      "to": "app",
+      "y": 820,
+      "label": "answer + citations",
+      "variant": "return"
+    },
+    {
+      "from": "app",
+      "to": "user",
+      "y": 848,
+      "label": "show answer + citations",
+      "variant": "return"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "violet",
+      "title": "Ingestion first",
+      "items": [
+        "Documents are embedded once, at sync time",
+        "Queries embed only the question"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Reranking inside retrieval",
+      "items": [
+        "Vector search over-fetches 20, the reranker keeps 5",
+        "Skipped when RERANK_MODEL_ARN is empty"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "One call does it all",
+      "items": [
+        "retrieve_and_generate runs embed, search, rerank and generation inside the KB",
+        "Streamlit only sends the question and shows the answer"
+      ]
+    }
+  ]
+}
